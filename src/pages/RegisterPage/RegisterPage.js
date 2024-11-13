@@ -51,9 +51,7 @@ const RegisterPage = () => {
     setPolicyError(false);
 
     // API 호출
-    dispatch(
-      registerUser({ name, email, password, birthday, profileImage, navigate })
-    );
+    dispatch(registerUser({ name, email, password, birthday, navigate }));
   };
 
   const handleChange = (event) => {
@@ -66,12 +64,6 @@ const RegisterPage = () => {
     } else {
       setFormData({ ...formData, [id]: value });
     }
-  };
-
-  // 이미지 업로드
-  const uploadImage = (url) => {
-    //이미지 업로드
-    setFormData({ ...formData, profileImage: url });
   };
 
   return (
@@ -135,21 +127,6 @@ const RegisterPage = () => {
           <Form.Control.Feedback type="invalid">
             {passwordError}
           </Form.Control.Feedback>
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <div className="form-label-container">
-            <Form.Label>프로필 사진</Form.Label>
-          </div>
-          <CloudinaryUploadWidget
-            className="cloudinary-style"
-            uploadImage={uploadImage}
-          />
-          <img
-            id="uploadedimage"
-            src={formData.profileImage}
-            className="upload-image-style"
-            alt="uploadedimage"
-          ></img>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Check

@@ -25,6 +25,33 @@ export const registerUser = createAsyncThunk(
   }
 );
 
+// 이메일로 로그인
+export const loginWithEmail = createAsyncThunk(
+  "user/loginWithEmail",
+  async ({ email, password }, { rejectWithValue }) => {
+    try {
+      const response = await api.post("/auth/login", { email, password });
+      sessionStorage.setItem("token", response.data.token);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+//구글로 로그인
+export const loginWithGoogle = createAsyncThunk(
+  "user/loginWithGoogle",
+  async (token, { rejectWithValue }) => {
+    try {
+      const response = await api.post("/auth/google", { token });
+      sessionStorage.setItem("token", response.data.token);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -52,6 +79,30 @@ const userSlice = createSlice({
       .addCase(registerUser.rejected, (state, action) => {
         state.loading = false;
         state.registrationError = action.payload;
+      })
+      .addCase(loginWithEmail.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loginWithEmail.fulfilled, (state, action) => {
+        state.loading = false;
+        state.loginError = null;
+        state.user = action.payload.user;
+      })
+      .addCase(loginWithEmail.rejected, (state, action) => {
+        state.loading = false;
+        state.loginError = action.payload;
+      })
+      .addCase(loginWithGoogle.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(loginWithGoogle.fulfilled, (state, action) => {
+        state.loading = false;
+        state.loginError = null;
+        state.user = action.payload.user;
+      })
+      .addCase(loginWithGoogle.rejected, (state, action) => {
+        state.loading = false;
+        state.loginError = action.payload;
       });
   },
 });
