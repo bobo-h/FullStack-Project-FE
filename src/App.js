@@ -1,8 +1,8 @@
 //import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-
-import AppLayout from "./Layout/AppLayout";
+import ChatbotCreation from "./pages/ChatbotPage/ChatbotPage";
 import AppRouter from "./routes/AppRouter";
+import AppLayout from "./Layout/AppLayout";
 
 function App() {
   return (

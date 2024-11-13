@@ -1,11 +1,13 @@
 import React from "react";
 import { Route, Routes } from "react-router";
 import ProductAll from "../pages/MainPage/MainPage";
+import ResgisterPage from "../pages/RegisterPage/RegisterPage";
 
 const AppRouter = () => {
   return (
     <Routes>
       <Route path="/" element={<ProductAll />} />
+      <Route path="/" element={<ResgisterPage />} />
       {/*
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<RegisterPage />} />
