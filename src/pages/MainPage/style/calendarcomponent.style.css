@@ -1,0 +1,44 @@
+/* 달력 컨테이너 */
+.calendar-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 600px; /* 전체 달력의 너비 고정 */
+  height: 650px; /* 전체 달력의 높이 고정 */
+}
+
+/*캘린더 UI고정 */
+.fc {
+  width: 600px; /* 전체 달력의 너비 고정 */
+  height: 600px; /* 전체 달력의 높이 고정 */
+  max-width: 100%; /* 화면이 작은 경우를 대비해 최대 너비 제한 */
+  margin: 0 auto; /* 중앙 정렬 */
+}
+
+.fc-daygrid-day {
+  width: 80px !important; /* 각 날짜 셀의 너비 고정 */
+  height: 80px !important; /* 각 날짜 셀의 높이 고정 */
+  overflow: hidden; /* 날짜 셀에 넘치는 내용을 숨기기 */
+}
+
+.day-cell-content {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.date-text {
+  position: absolute; /* 상대적인 위치를 잡기 위해서 absolute 필요 */
+  top: 0; /* 상단 기준으로 위치 설정 */
+  right: 0; /* 오른쪽 끝에 맞추어 배치 */
+}
+/* 고양이 발바닥 표시  // 날짜와 고양이 도장 사이에 약간의 간격 추가*/
+.paw-mark {
+  display: block; /* 불필요한 여백을 제거하기 위해 이미지 요소를 블록 요소로 설정 */
+  width: 50px; /* 고양이 도장의 너비를 줄여서 날짜 셀 안에 맞추기 */
+  height: 50px; /* 고양이 도장의 높이도 셀 크기에 맞게 조정 */
+  margin: 0 auto; /* 이미지가 중앙에 위치하도록 설정 */
+  border-radius: 50%; /* 둥근 이미지로 설정 */
+  position: absolute; /* 상대적인 위치를 잡기 위해서 absolute 필요 */
+  top: 20px; /* 상단 기준으로 위치 설정 */
+  right: 11px; /* 오른쪽 끝에 맞추어 배치 */
+}
