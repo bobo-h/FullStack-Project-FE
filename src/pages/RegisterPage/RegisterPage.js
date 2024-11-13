@@ -125,8 +125,7 @@ const RegisterPage = () => {
             {passwordError}
           </Form.Control.Feedback>
         </Form.Group>
-
-        <Form.Group controlId="formPolicy">
+        <Form.Group className="mb-3">
           <Form.Check
             type="checkbox"
             label="이용약관에 동의합니다"

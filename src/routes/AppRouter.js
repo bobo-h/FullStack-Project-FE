@@ -8,8 +8,8 @@ import LoginPage from "../pages/LoginPage/LoginPage";
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/" element={<MainPage/>} />
-      <Route path="/chatbot" element={<ChatbotPage/>} />
+      <Route path="/" element={<MainPage />} />
+      <Route path="/chatbot" element={<ChatbotPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<ResgisterPage />} />
     </Routes>
