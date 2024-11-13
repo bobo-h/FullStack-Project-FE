@@ -1,14 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./style/main.style.css";
+import { Modal} from "react-bootstrap";
 import Button from "../../common/components/Button";
+import ChatbotPage from "../ChatbotPage/ChatbotPage";
 
 const MainPage = () => {
   const navigate = useNavigate();
 
+  const [showModal, setShowModal] = useState(false);
+
+    
   const goToChatbotPage = () => {
-    navigate("/chatbot"); 
+    setShowModal(true);  
   };
+  const handleCloseModal = () => {
+    setShowModal(false); 
+  };
+
   const goToRegister = () => {
     navigate("/"); 
   };
@@ -24,7 +33,13 @@ const MainPage = () => {
         <Button >Diary Page</Button>
         <Button >Shop Page</Button>
       </div>
+
+        <Modal show={showModal} onHide={handleCloseModal} centered size="lg">
+            <ChatbotPage />
+        </Modal>
     </div>
+
+
   );
 };
 

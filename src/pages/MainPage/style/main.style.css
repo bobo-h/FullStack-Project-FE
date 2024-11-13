@@ -26,4 +26,23 @@ body {
         gap: 20px;
         flex-wrap: wrap; 
       }
+    /* Modal dialog adjustments */
+    .modal-dialog {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        height: 80vh !important;
+        max-height: 800px !important;
+    }
+    
+    /* Modal content adjustments */
+    .modal-content {
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        height: 100% !important;
+        max-height: 800px !important;
+        padding: 20px !important;
+        border-radius: 10px !important;
+    }  
 }

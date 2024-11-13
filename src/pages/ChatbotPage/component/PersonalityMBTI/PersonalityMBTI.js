@@ -2,7 +2,11 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 
 const PersonalityBtn = ({ onPersonalitySelect }) => {
-  const personalities = ['친절한', '유머있는', '논리적인', '감성적인'];
+    const personalities = [
+        'ISFP', 'ENTP', 'INFJ', 'INTP', 'ENFJ', 'INFP', 'ISTJ', 'ISFJ',
+        'ESTP', 'ESFP', 'ENTJ', 'INTJ', 'ESTJ', 'ESFJ', 'ISFP', 'ENFP'
+      ];
+      
 
   return (
     <div className="d-flex flex-wrap">
