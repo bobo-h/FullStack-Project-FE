@@ -1,14 +1,13 @@
-//import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import AppRouter from "./routes/AppRouter";
+import "bootstrap/dist/css/bootstrap.min.css";
 import AppLayout from "./Layout/AppLayout";
+import AppRouter from "./routes/AppRouter";
 
 function App() {
   
   return (
     <div>
       <AppLayout>
-        <AppRouter />
+        <AppRouter/>
       </AppLayout>
     </div>
     

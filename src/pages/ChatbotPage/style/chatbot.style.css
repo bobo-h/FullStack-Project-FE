@@ -1,0 +1,34 @@
+.chatbot-create-modal{
+    height: 100%;
+     display: flex; /* Enable flexbox */
+    justify-content: center; /* Center horizontally */
+     align-items: center; /* Center vertically */
+
+     .create-modal-flex {
+        display: flex; /* Flexbox container */
+        flex-direction: column; /* Stack items vertically */
+        width: 100%; /* Ensure it fills the available width */
+        max-width: 900px; /* Optional: limit the width */
+        padding: 20px; /* Add some padding */
+        background-color: #fff; /* Set a background color */
+        border-radius: 10px; /* Optional: rounded corners */
+      }
+
+    .create-modal-title{
+        margin-bottom: 5%;
+    }
+
+    .btn-gap {
+        display: flex;
+        gap: 20px;
+    }
+    
+    .personality-area{
+        margin-top: 5%;
+    }
+
+    .chatbot-image-size{
+        width: '200px';
+        margin-bottom: '20px';
+    }
+}
