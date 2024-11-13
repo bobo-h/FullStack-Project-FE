@@ -5,8 +5,6 @@ import MainPage from "../pages/MainPage/MainPage";
 import ResgisterPage from "../pages/RegisterPage/RegisterPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 
-
-
 const AppRouter = () => {
   return (
     <Routes>
