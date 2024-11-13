@@ -1,7 +1,12 @@
 import React, { useState, useEffect, memo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import "../style/common.style.css";
 import debounce from "lodash.debounce";
+import "../style/navbar.style.css";
+import { ReactComponent as HomeIcon } from "../../assets/home.svg";
+import { ReactComponent as DiaryIcon } from "../../assets/diary.svg";
+import { ReactComponent as AddIcon } from "../../assets/add.svg";
+import { ReactComponent as ShopIcon } from "../../assets/shop.svg";
+import { ReactComponent as InfoIcon } from "../../assets/info.svg";
 
 const Navbar = memo(() => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -9,11 +14,15 @@ const Navbar = memo(() => {
   const navigate = useNavigate();
 
   const items = [
-    { icon: "🏠", text: "Home", path: "/" },
-    { icon: "📔", text: "Diary", path: "/diary" },
-    { icon: "➕", text: "Write", path: "/add-diary" },
-    { icon: "🛒", text: "Shop", path: "/shop" },
-    { icon: "👤", text: "My", path: "/my-page" },
+    { icon: <HomeIcon className="app-icon" />, text: "Home", path: "/" },
+    { icon: <DiaryIcon className="app-icon" />, text: "Diary", path: "/diary" },
+    {
+      icon: <AddIcon className="app-icon" />,
+      text: "Write",
+      path: "/add-diary",
+    },
+    { icon: <ShopIcon className="app-icon" />, text: "Shop", path: "/shop" },
+    { icon: <InfoIcon className="app-icon" />, text: "My", path: "/my-page" },
   ];
 
   // 화면 크기 변경 감지
@@ -56,17 +65,15 @@ const Navbar = memo(() => {
         {items.map((item, index) => (
           <div
             key={index}
-            className={`app-option-items ${
-              hoveredIndex === index && windowWidth >= 700 ? "hovered" : ""
-            }`}
+            className={`app-option-items`}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
             onClick={() => handleClick(item.path)}
           >
             {windowWidth >= 700 && hoveredIndex === index ? (
-              <span className="item-text">{item.text}</span>
+              <span className="app-item-text">{item.text}</span>
             ) : (
-              <span className="icon">{item.icon}</span>
+              item.icon
             )}
           </div>
         ))}

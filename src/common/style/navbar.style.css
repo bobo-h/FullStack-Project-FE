@@ -42,6 +42,15 @@
   width: 140px;
   background-color: #fefae0;
 }
+.app-icon {
+  height: 35px;
+  width: 35px;
+  color: #fefae0;
+}
+.app-item-text {
+  font-size: 20px;
+  font-weight: bold; /* 텍스트를 굵게 설정 */
+}
 
 /* 모바일 환경에서 스타일 변경 */
 @media (max-width: 700px) {
@@ -66,14 +75,27 @@
     height: 45px;
     transform: none; /* 모바일에서는 변형 없음 */
     width: 70px; /* 호버 효과 제거로 너비 고정 */
+    transition: background-color 0.2s ease; /* 배경색만 애니메이션 */
     background-color: #b99470; /* 기본 배경색 유지 */
   }
-
-  /* 모바일 환경에서 호버 상태에서의 변화 최소화 */
+  .app-icon {
+    height: 30px;
+    width: 30px;
+  }
+  /* 모바일에서는 호버 효과가 없는것 처럼 */
   .app-option-items:hover {
+    background-color: #b99470;
+    transform: none;
+    width: 70px;
+  }
+
+  .app-option-items:active {
     background-color: #fefae0; /* 약간의 배경색 변경만 적용 */
     transform: none;
     width: 70px;
+  }
+  .app-option-items:active .app-icon {
+    color: black;
   }
 }
 
