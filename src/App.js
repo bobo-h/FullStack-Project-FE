@@ -4,7 +4,7 @@ import ChatbotCreation from "./pages/ChatbotPage/ChatbotPage";
 import AppRouter from "./routes/AppRouter";
 function App() {
   return (
-    <div className="App">
+    <div>
       {/* <ChatbotCreation /> */}
       <AppRouter />
     </div>
