@@ -1,0 +1,85 @@
+.app-navbar {
+  position: fixed; /* 좌측에 고정 */
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 100px;
+  background-color: #5f6f52;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.4);
+  z-index: 1000; /* 필요 시 다른 요소보다 위로 올리기 */
+}
+
+.app-options {
+  height: 450px;
+  width: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+/* 공통 스타일 */
+.app-option-items {
+  height: 70px;
+  width: 70px;
+  border-radius: 15px;
+  background-color: #b99470;
+  transition: transform 0.2s ease, width 0.4s ease, background-color 1s ease; /* 확장 시 애니메이션 */
+  transform-origin: left; /* 왼쪽을 기준으로 확장 */
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden; /* 텍스트 오버플로 방지 */
+}
+
+/* 데스크탑 환경에서 호버 상태 */
+.app-option-items:hover {
+  transform: translateX(25%);
+  width: 140px;
+  background-color: #fefae0;
+}
+
+/* 모바일 환경에서 스타일 변경 */
+@media (max-width: 700px) {
+  .app-navbar {
+    top: auto; /* 상단 위치 초기화 */
+    bottom: 0; /* 하단에 위치 */
+    left: 0;
+    width: 100vw; /* 가로 너비로 확장 */
+    height: 60px; /* 높이를 100px로 변경 */
+  }
+  .app-options {
+    height: 60px;
+    width: 100vw; /* 가로로 전체 너비 사용 */
+    display: flex;
+    flex-direction: row; /* 가로 배열 */
+    align-items: center;
+    justify-content: space-around; /* 좌우로 아이템 균등 분배 */
+  }
+
+  /* 모바일 환경에서 .item 스타일 수정 */
+  .app-option-items {
+    height: 45px;
+    transform: none; /* 모바일에서는 변형 없음 */
+    width: 70px; /* 호버 효과 제거로 너비 고정 */
+    background-color: #b99470; /* 기본 배경색 유지 */
+  }
+
+  /* 모바일 환경에서 호버 상태에서의 변화 최소화 */
+  .app-option-items:hover {
+    background-color: #fefae0; /* 약간의 배경색 변경만 적용 */
+    transform: none;
+    width: 70px;
+  }
+}
+
+/*
+ #5F6F52
+#A9B388
+#FEFAE0
+#B99470 
+*/
