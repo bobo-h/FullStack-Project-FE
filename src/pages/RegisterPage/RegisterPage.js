@@ -1,9 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { Container, Form, Button } from "react-bootstrap";
+import { Container, Form, Button, Alert } from "react-bootstrap";
 import "./style/resgister.style.css";
-import CloudinaryUploadWidget from "../../utils/CloudinaryUploadWidget";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerUser } from "../../features/user/userSlice";
 
@@ -17,24 +16,20 @@ const RegisterPage = () => {
     birthday: "",
     password: "",
     confirmPassword: "",
-    profileImage: "",
     policy: false,
   });
 
   const [passwordError, setPasswordError] = useState("");
   const [policyError, setPolicyError] = useState(false);
 
+  const { loading, success, registrationError } = useSelector(
+    (state) => state.user
+  );
+
   const register = (event) => {
     event.preventDefault();
-    const {
-      email,
-      name,
-      password,
-      confirmPassword,
-      birthday,
-      profileImage,
-      policy,
-    } = formData;
+    const { email, name, password, confirmPassword, birthday, policy } =
+      formData;
 
     const checkConfirmPassword = password === confirmPassword;
     if (!checkConfirmPassword) {
@@ -51,9 +46,7 @@ const RegisterPage = () => {
     setPolicyError(false);
 
     // API 호출
-    dispatch(
-      registerUser({ name, email, password, birthday, profileImage, navigate })
-    );
+    dispatch(registerUser({ name, email, password, birthday, navigate }));
   };
 
   const handleChange = (event) => {
@@ -68,16 +61,17 @@ const RegisterPage = () => {
     }
   };
 
-  // 이미지 업로드
-  const uploadImage = (url) => {
-    //이미지 업로드
-    setFormData({ ...formData, profileImage: url });
-  };
-
   return (
     <Container className="register-area">
+      {registrationError && (
+        <div>
+          <Alert variant="danger" className="resgister__error-message">
+            {registrationError}
+          </Alert>
+        </div>
+      )}
       <Form onSubmit={register}>
-        <Form.Group className="mb-3">
+        <Form.Group controlId="formEmail">
           <Form.Label>이메일</Form.Label>
           <Form.Control
             type="email"
@@ -85,10 +79,9 @@ const RegisterPage = () => {
             placeholder="이메일을 입력해주세요"
             onChange={handleChange}
             required
-            className="email-form-style"
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group controlId="formName">
           <Form.Label>이름</Form.Label>
           <Form.Control
             type="text"
@@ -96,10 +89,9 @@ const RegisterPage = () => {
             placeholder="이름을 입력해주세요"
             onChange={handleChange}
             required
-            className="name-form-style"
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group controlId="formBirthday">
           <Form.Label>생년월일</Form.Label>
           <Form.Control
             type="date"
@@ -107,10 +99,9 @@ const RegisterPage = () => {
             placeholder="생년월일을 입력해주세요"
             onChange={handleChange}
             required
-            className="birthday-form-style"
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group controlId="formPassword">
           <Form.Label>비밀번호</Form.Label>
           <Form.Control
             type="password"
@@ -118,10 +109,9 @@ const RegisterPage = () => {
             placeholder="비밀번호를 입력해주세요"
             onChange={handleChange}
             required
-            className="password-form-style"
           />
         </Form.Group>
-        <Form.Group className="mb-3">
+        <Form.Group controlId="formConfirmPassword">
           <Form.Label>비밀번호 재확인</Form.Label>
           <Form.Control
             type="password"
@@ -130,38 +120,22 @@ const RegisterPage = () => {
             onChange={handleChange}
             required
             isInvalid={passwordError}
-            className="confirmpassword-form-style"
           />
           <Form.Control.Feedback type="invalid">
             {passwordError}
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group className="mb-3">
-          <div className="form-label-container">
-            <Form.Label>프로필 사진</Form.Label>
-          </div>
-          <CloudinaryUploadWidget
-            className="cloudinary-style"
-            uploadImage={uploadImage}
-          />
-          <img
-            id="uploadedimage"
-            src={formData.profileImage}
-            className="upload-image-style"
-            alt="uploadedimage"
-          ></img>
-        </Form.Group>
-        <Form.Group className="mb-3">
+
+        <Form.Group controlId="formPolicy">
           <Form.Check
             type="checkbox"
             label="이용약관에 동의합니다"
             id="policy"
             onChange={handleChange}
             isInvalid={policyError}
-            className="policy-style"
           />
         </Form.Group>
-        <Button variant="danger" type="submit" className="submin-btn-style">
+        <Button className="resgister__button" type="submit">
           회원가입
         </Button>
       </Form>
