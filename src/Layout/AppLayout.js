@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import NavBar from "../common/components/NavBar";
+import NavBar from "../common/components/Navbar";
 import "./style/applayout.style.css";
 import LodingSpinner from "../common/components/LodingSpinner";
 

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../style/common.style.css";
 import debounce from "lodash.debounce";
 
-const Navbar = memo(() => {
+const NavBar = memo(() => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
@@ -75,4 +75,4 @@ const Navbar = memo(() => {
   );
 });
 
-export default Navbar;
+export default NavBar;
