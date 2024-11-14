@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Row, Col } from "react-bootstrap";
+import Button from "./../../../common/components/Button";
 
 const DiaryListFilter = ({ onFilterChange }) => {
   const [year, setYear] = useState("");
