@@ -47,6 +47,14 @@
   top: 0;
   left: 0;
 }
+
+.navigate-admin-button {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  top: 12px;
+  right: 100px;
+}
 /*
  #5F6F52
 #A9B388
