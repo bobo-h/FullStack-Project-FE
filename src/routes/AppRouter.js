@@ -4,6 +4,8 @@ import ChatbotPage from "../pages/ChatbotPage/ChatbotPage";
 import MainPage from "../pages/MainPage/MainPage";
 import ResgisterPage from "../pages/RegisterPage/RegisterPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
+import ProductPage from "../pages/ProductPage/ProductPage"
+import PaymentPage from "../pages/PaymentPage/PaymentPage";
 
 const AppRouter = () => {
   return (
@@ -12,6 +14,8 @@ const AppRouter = () => {
       <Route path="/chatbot" element={<ChatbotPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<ResgisterPage />} />
+      <Route path="/shop" element={<ProductPage />} />
+      <Route path="/payment" element={<PaymentPage />} />
     </Routes>
   );
 };
