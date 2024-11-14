@@ -15,11 +15,15 @@ const NavBar = memo(() => {
 
   const items = [
     { icon: <HomeIcon className="app-icon" />, text: "Home", path: "/" },
-    { icon: <DiaryIcon className="app-icon" />, text: "Diary", path: "/diary" },
+    {
+      icon: <DiaryIcon className="app-icon" />,
+      text: "Diary",
+      path: "/diaries",
+    },
     {
       icon: <AddIcon className="app-icon" />,
       text: "Write",
-      path: "/add-diary",
+      path: "/diaries/new",
     },
     { icon: <ShopIcon className="app-icon" />, text: "Shop", path: "/shop" },
     { icon: <InfoIcon className="app-icon" />, text: "My", path: "/my-page" },
