@@ -46,14 +46,14 @@
 .cat-widget-container {
   width: 500px;
   height: 97%;
-  background-color: #a9b388;
+  background-color: var(--primary-color-lightGreen);
   border-radius: 10px;
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
   position: relative;
 }
 
 .close-button:hover {
-  background-color: #ff1a1a;
+  background-color: var(--primary-color-lightGreen);
 }
 
 .cat-list-close {
@@ -72,4 +72,8 @@
 #A9B388
 #FEFAE0
 #B99470 
+var(--primary-color-deepGreen)
+var(--primary-color-lightGreen)
+var(--primary-color-ivory)
+var(--primary-color-brown)
 */
