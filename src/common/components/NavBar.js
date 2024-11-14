@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../style/common.style.css";
 import debounce from "lodash.debounce";
 
-const NavBar = memo(() => {
+const Navbar = memo(({ toggleAlert, isAlertOpen }) => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
@@ -14,6 +14,8 @@ const NavBar = memo(() => {
     { icon: "➕", text: "Write", path: "/add-diary" },
     { icon: "🛒", text: "Shop", path: "/shop" },
     { icon: "👤", text: "My", path: "/my-page" },
+    { icon: "😺", text: "Chatbot", path: "/chatbot" },
+    { icon: "🔔", text: "Alert", path: "" },
   ];
 
   // 화면 크기 변경 감지
@@ -50,6 +52,10 @@ const NavBar = memo(() => {
     [navigate]
   );
 
+  const handleAlertClick = () => {
+    toggleAlert();
+  };
+
   return (
     <div className="app-navbar">
       <div className="app-options">
@@ -61,7 +67,10 @@ const NavBar = memo(() => {
             }`}
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
-            onClick={() => handleClick(item.path)}
+            // onClick={() => handleClick(item.path)}
+            onClick={() =>
+              item.text === "Alert" ? handleAlertClick() : handleClick(item.path)
+            }
           >
             {windowWidth >= 700 && hoveredIndex === index ? (
               <span className="item-text">{item.text}</span>
@@ -75,4 +84,4 @@ const NavBar = memo(() => {
   );
 });
 
-export default NavBar;
+export default Navbar;
