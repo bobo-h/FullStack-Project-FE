@@ -11,7 +11,7 @@
 }
 .main-container {
   width: 100%; /* 부모 요소를 전체 화면으로 가정 */
-  height: 100vh; /* 전체 높이로 설정 */
+  height: 100%; /* 전체 높이로 설정 */
   overflow: hidden; /* 이미지가 잘릴 수 있으므로, 넘치는 부분은 숨기기 */
   position: relative;
 }
@@ -19,52 +19,32 @@
 /* 달력 버튼 */
 .main-opt {
   cursor: pointer;
-  padding: 10px;
+  height: 70px;
+  width: 70px;
 }
 
 .calendar-button {
   position: absolute;
-  bottom: 100px;
+  top: 10px;
   right: 10px;
 }
-.cat-list-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
-
 .close-button {
-  background-color: #ff5c5c;
-  color: white;
+  background-color: transparent;
+  color: var(--primary-color-brown);
   border: none;
-  padding: 5px 10px;
   cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-}
-
-.cat-widget-container {
-  width: 500px;
-  height: 97%;
-  background-color: #a9b388;
-  border-radius: 10px;
-  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.3);
-  position: relative;
+  font-size: 20px;
+  border-radius: 50%;
 }
 
 .close-button:hover {
-  background-color: #ff1a1a;
-}
-
-.cat-list-close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
+  background-color: var(--primary-color-brown);
+  color: var(--primary-color-ivory);
 }
 
 .calendar-close {
   position: absolute;
-  bottom: 0;
+  top: 0;
   left: 0;
 }
 /*
@@ -72,4 +52,8 @@
 #A9B388
 #FEFAE0
 #B99470 
+var(--primary-color-deepGreen)
+var(--primary-color-lightGreen)
+var(--primary-color-ivory)
+var(--primary-color-brown)
 */

@@ -4,7 +4,7 @@
   top: 0;
   height: 100vh;
   width: 100px;
-  background-color: #5f6f52;
+  background-color: var(--primary-color-deepGreen);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@
   height: 70px;
   width: 70px;
   border-radius: 15px;
-  background-color: #b99470;
+  background-color: var(--primary-color-brown);
   transition: transform 0.2s ease, width 0.4s ease, background-color 1s ease; /* 확장 시 애니메이션 */
   transform-origin: left; /* 왼쪽을 기준으로 확장 */
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
@@ -40,7 +40,16 @@
 .app-option-items:hover {
   transform: translateX(25%);
   width: 140px;
-  background-color: #fefae0;
+  background-color: var(--primary-color-ivory);
+}
+.app-icon {
+  height: 35px;
+  width: 35px;
+  color: var(--primary-color-ivory);
+}
+.app-item-text {
+  font-size: 20px;
+  font-weight: bold; /* 텍스트를 굵게 설정 */
 }
 
 /* 모바일 환경에서 스타일 변경 */
@@ -66,14 +75,29 @@
     height: 45px;
     transform: none; /* 모바일에서는 변형 없음 */
     width: 70px; /* 호버 효과 제거로 너비 고정 */
-    background-color: #b99470; /* 기본 배경색 유지 */
+    transition: background-color 0.2s ease; /* 배경색만 애니메이션 */
+    background-color: var(--primary-color-brown); /* 기본 배경색 유지 */
   }
-
-  /* 모바일 환경에서 호버 상태에서의 변화 최소화 */
+  .app-icon {
+    height: 30px;
+    width: 30px;
+  }
+  /* 모바일에서는 호버 효과가 없는것 처럼 */
   .app-option-items:hover {
-    background-color: #fefae0; /* 약간의 배경색 변경만 적용 */
+    background-color: var(--primary-color-brown);
     transform: none;
     width: 70px;
+  }
+
+  .app-option-items:active {
+    background-color: var(
+      --primary-color-ivory
+    ); /* 약간의 배경색 변경만 적용 */
+    transform: none;
+    width: 70px;
+  }
+  .app-option-items:active .app-icon {
+    color: black;
   }
 }
 
@@ -82,4 +106,8 @@
 #A9B388
 #FEFAE0
 #B99470 
+var(--primary-color-deepGreen)
+var(--primary-color-lightGreen)
+var(--primary-color-ivory)
+var(--primary-color-brown)
 */

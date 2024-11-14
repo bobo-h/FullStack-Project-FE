@@ -1,10 +1,17 @@
 .app-layout {
   height: 100vh;
-  width: calc(100vw - 100px); /* navbar의 너비를 제외한 나머지 화면 */
-  margin-left: 100px; /* navbar의 너비만큼 왼쪽 여백 */
+  width: calc(100vw - 100px);
+  margin-left: 100px;
   display: flex;
-  justify-content: center; /* 필요에 따라 조정 */
+  justify-content: center;
   align-items: center;
+}
+
+/* 사이드바가 활성화되었을 때의 .app-layout */
+.app-layout.sidebar-active {
+  width: calc(
+    100vw - 100px - 400px
+  ); /* navbar와 사이드바의 너비를 제외한 나머지 화면 */
 }
 /* 화면 너비가 700px 미만일 때 레이아웃 조정 */
 @media (max-width: 700px) {
@@ -12,6 +19,26 @@
     width: 100vw; /* 전체 너비 */
     margin-left: 0; /* 왼쪽 여백 제거 */
     height: calc(100vh - 60px); /* navbar 높이를 제외한 나머지 화면 높이 */
-    padding-bottom: 60px; /* Navbar의 높이만큼 아래 패딩을 추가해서 겹침 방지 [뺄수도 있음]*/
+  }
+  /* 사이드바 활성화 시 작은 화면에서는 레이아웃을 다르게 설정 */
+  .app-layout.sidebar-active {
+    width: 100vw; /* 사이드바가 활성화되어도 본문 너비를 그대로 유지 */
   }
 }
+
+/* 수빈님 */
+
+/* .app-layout.no-flex {
+  display: block; }/admin 페이지에서 flex를 없애는 방식 */
+
+/* 미디어 쿼리 */
+/* @media (max-width: 700px) {
+  .app-layout {
+    width: 100vw;
+    margin-left: 0;
+    height: calc(100vh - 60px);
+    padding-bottom: 60px;  } */
+
+/* .app-layout.no-flex {
+    display: block; 
+}/* 모바일에서도 /admin 페이지에서 flex를 제거하려면 display: block */

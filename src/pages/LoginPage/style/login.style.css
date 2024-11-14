@@ -5,49 +5,49 @@
   justify-content: center;
   align-items: center;
   height: 100vh; /* 화면 높이 전체를 차지 */
-}
 
-.login-button-area {
-  display: flex;
-  flex-direction: column;
-}
+  .login-button-area {
+    display: flex;
+    flex-direction: column;
+  }
 
-.login__btn {
-  background-color: #5f6f52;
-  border: #5f6f52;
-  margin-bottom: 10px;
-  font-weight: bolder;
-}
+  .login__btn {
+    background-color: #5f6f52;
+    border: #5f6f52;
+    margin-bottom: 10px;
+    font-weight: bolder;
+  }
 
-.login__btn:hover {
-  background-color: #a9b388;
-}
+  .login__btn:hover {
+    background-color: #a9b388;
+  }
 
-.register-link-area {
-  font-weight: bolder;
-  color: #5f6f52;
-}
+  .register-link-area {
+    font-weight: bolder;
+    color: #5f6f52;
+  }
 
-.link__register {
-  color: #b99470;
-}
+  .link__register {
+    color: #b99470;
+  }
 
-.login-area .form-label {
-  text-align: left;
-  font-weight: bolder;
-  margin-bottom: 10px;
-}
+  .login-area .form-label {
+    text-align: left;
+    font-weight: bolder;
+    margin-bottom: 10px;
+  }
 
-.guide-other-account {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  font-weight: bolder;
-  margin: 10px;
+  .guide-other-account {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-weight: bolder;
+    margin: 10px;
 
-  color: #5f6f52;
-}
+    color: #5f6f52;
+  }
 
-.google-login__btn {
-  margin: 0 auto; /* 버튼을 가운데 자동 정렬 */
+  .google-login__btn {
+    margin: 0 auto; /* 버튼을 가운데 자동 정렬 */
+  }
 }

@@ -6,6 +6,7 @@ import "./style/chatbot.style.css";
 import Button from "../../common/components/Button";
 import PersonalityMBTI from './component/PersonalityMBTI/PersonalityMBTI';
 import Spinner from 'react-bootstrap/Spinner';
+import Button2 from '../../common/components/Button2';
 //import PersonalityBox from './component/PersonalityBox/PersonalityBox';
 
 // ChatbotCreation 컴포넌트
@@ -71,11 +72,11 @@ const ChatbotCreation = () => {
                                     <Form.Label>챗봇 성격</Form.Label>
                                 </Col>
                                 <Col className='btn-gap'>
-                                    <Button 
+                                    <Button2 
                                         variant={isDirectInput ? 'outline-secondary' : 'primary'} 
                                         onClick={() => handleInputTypeChange(true)}>
                                         직접 입력
-                                    </Button>
+                                    </Button2>
                                     <Button 
                                         variant={isDirectInput ? 'primary' : 'outline-secondary'} 
                                         onClick={() => handleInputTypeChange(false)}>
