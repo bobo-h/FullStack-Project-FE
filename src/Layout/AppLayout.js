@@ -13,7 +13,7 @@ const AppLayout = ({ children }) => {
   const pageMapping = [
     //사이드 바 때문에
     { path: "/", page: "home", sidebar: true },
-    { path: "/diary", page: "diary", sidebar: true },
+    { path: "/diaries", page: "diary", sidebar: true },
     { path: "/add-diary", page: "add-diary", sidebar: false },
     { path: "/shop", page: "shop", sidebar: false },
     { path: "/my-page", page: "my", sidebar: false },
@@ -54,9 +54,15 @@ const AppLayout = ({ children }) => {
     //   {!isAdminPage && <NavBar toggleAlert={toggleAlert} />}
     //   {children}
     <div
-      className={`app-layout ${isSidebarActive ? "sidebar-active" : ""} ${
-        isAdminPage ? "no-flex" : ""
-      }`}
+      className={`app-layout ${
+        isSidebarActive
+          ? currentPage === "home"
+            ? "sidebar-active-right"
+            : currentPage === "diary"
+            ? "sidebar-active-left"
+            : "sidebar-active"
+          : ""
+      } ${isAdminPage ? "no-flex" : ""}`}
     >
       <NavBar isAdminPage={isAdminPage} />
       <SideBar
