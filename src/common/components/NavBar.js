@@ -8,7 +8,7 @@ import { ReactComponent as AddIcon } from "../../assets/add.svg";
 import { ReactComponent as ShopIcon } from "../../assets/shop.svg";
 import { ReactComponent as InfoIcon } from "../../assets/info.svg";
 
-const Navbar = memo(() => {
+const NavBar = memo(() => {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
@@ -82,4 +82,4 @@ const Navbar = memo(() => {
   );
 });
 
-export default Navbar;
+export default NavBar;
