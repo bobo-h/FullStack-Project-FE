@@ -7,6 +7,7 @@ import "./style/applayout.style.css";
 
 const AppLayout = ({ children }) => {
   const location = useLocation();
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
   const [currentPage, setCurrentPage] = useState("");
   const [isSidebarActive, setIsSidebarActive] = useState(false);
   const pageMapping = [
@@ -34,9 +35,23 @@ const AppLayout = ({ children }) => {
     }
   }, [location.pathname]);
 
+  const toggleAlert = () => {
+    setIsAlertVisible(!isAlertVisible);
+  };
+
+  // 현재 경로가 /admin인지 확인
+  const isAdminPage = location.pathname === "/admin";
+  const isMyPage = location.pathname === "/my-page";
+
+  // 경로가 /admin일 때 display: flex를 제거하려면 no-flex 클래스 추가
+  const appLayoutClass = isAdminPage ? "no-flex" : "display-flex";
+
   const loading = false;
 
   return (
+    // <div className={`app-layout ${appLayoutClass}`}>
+    //   {!isAdminPage && <NavBar toggleAlert={toggleAlert} />}
+    //   {children}
     <div className={`app-layout ${isSidebarActive ? "sidebar-active" : ""}`}>
       <NavBar />
       <SideBar
@@ -44,7 +59,8 @@ const AppLayout = ({ children }) => {
         isSidebarActive={isSidebarActive}
         setIsSidebarActive={setIsSidebarActive}
       />
-      {loading ? <LoadingSpinner /> : children}
+      {/* {loading ? <LoadingSpinner /> : children} */}
+      {children}
     </div>
   );
 };

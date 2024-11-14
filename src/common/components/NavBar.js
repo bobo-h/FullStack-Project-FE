@@ -23,6 +23,7 @@ const NavBar = memo(() => {
     },
     { icon: <ShopIcon className="app-icon" />, text: "Shop", path: "/shop" },
     { icon: <InfoIcon className="app-icon" />, text: "My", path: "/my-page" },
+    { icon: "⚙️", text: "Admin", path: "/admin" },
   ];
 
   // 화면 크기 변경 감지
