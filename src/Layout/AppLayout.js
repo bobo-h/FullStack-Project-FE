@@ -5,12 +5,12 @@ import LodingSpinner from "../common/components/LodingSpinner";
 
 const AppLayout = ({ children }) => {
   useEffect(() => {}, []);
-  const loging = true;
+  const loging = false;
 
   return (
     <div className="app-layout">
       <NavBar />
-      {loging ? <LodingSpinner /> : { children }}
+      {loging ? <LodingSpinner /> : children}
     </div>
   );
 };

@@ -1,0 +1,29 @@
+.mypage-style {
+  width: calc(100vw - 100px);
+}
+
+.mobile-sidebar-toggle {
+  display: none;
+}
+
+/* 화면 너비가 768px 이하일 때 (모바일) */
+@media (max-width: 768px) {
+  .mobile-sidebar-toggle {
+    /* 보이도록 설정 */
+    display: block;
+    width: 100vw;
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+.sidebar-area {
+  list-style-type: none;
+}
+
+.sidebar-item {
+  font-weight: bolder;
+  color: #5f6f52;
+}

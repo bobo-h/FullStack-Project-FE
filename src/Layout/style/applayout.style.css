@@ -3,8 +3,8 @@
   width: calc(100vw - 100px); /* navbar의 너비를 제외한 나머지 화면 */
   margin-left: 100px; /* navbar의 너비만큼 왼쪽 여백 */
   display: flex;
-  justify-content: center; /* 필요에 따라 조정 */
-  align-items: center;
+  justify-content: flex-start; /* 필요에 따라 조정 */
+  align-items: flex-start;
 }
 /* 화면 너비가 700px 미만일 때 레이아웃 조정 */
 @media (max-width: 700px) {
