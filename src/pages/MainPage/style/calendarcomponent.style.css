@@ -1,10 +1,17 @@
 /* 달력 컨테이너 */
-.calendar-container {
+.cat-calendar-container {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 600px; /* 전체 달력의 너비 고정 */
+  width: 650px; /* 전체 달력의 너비 고정 */
   height: 650px; /* 전체 달력의 높이 고정 */
+  background-color: var(
+    --primary-color-ivory
+  ); /* 달력 배경을 아이보리로 설정 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
 }
 
 /*캘린더 UI고정 */
@@ -19,6 +26,55 @@
   width: 80px !important; /* 각 날짜 셀의 너비 고정 */
   height: 80px !important; /* 각 날짜 셀의 높이 고정 */
   overflow: hidden; /* 날짜 셀에 넘치는 내용을 숨기기 */
+}
+
+/* 날짜 텍스트 색상 */
+.date-text {
+  color: var(--primary-color-brown); /* 날짜 텍스트를 갈색으로 설정 */
+}
+
+.fc-col-header-cell-cushion {
+  color: black; /* 요일 헤더 텍스트 색상 */
+  text-decoration: none; /* 밑줄 제거 */
+}
+
+.fc-col-header-cell {
+  background-color: var(--primary-color-brown); /* 요일 헤더 배경색 */
+}
+
+/* 공통 버튼 스타일 */
+.fc-button.fc-today-button,
+.fc-button.fc-prev-button,
+.fc-button.fc-next-button {
+  background-color: var(--primary-color-deepGreen);
+  color: var(--primary-color-ivory);
+  border-color: var(--primary-color-deepGreen);
+}
+
+/* 투데이 비활성화 상태 스타일 */
+.fc-button.fc-today-button:disabled,
+.fc-button.fc-today-button:disabled.fc-button-primary:active,
+.fc-button.fc-today-button:disabled:hover {
+  background-color: var(--primary-color-deepGreen); /* 배경색 */
+  border-color: var(--primary-color-deepGreen);
+  cursor: not-allowed; /* 커서 모양 */
+  opacity: 0.6; /* 투명도 */
+}
+
+/* 다음 버튼의 상태별 스타일 */
+.fc-button.fc-today-button:hover,
+.fc-button.fc-prev-button:hover,
+.fc-button.fc-next-button:hover {
+  background-color: var(--primary-color-brown);
+  border-color: var(--primary-color-brown);
+}
+
+.fc-button.fc-today-button.fc-button-primary:active,
+.fc-button.fc-prev-button.fc-button-primary:active,
+.fc-button.fc-next-button.fc-button-primary:active {
+  background-color: var(--primary-color-brown);
+  border-color: var(--primary-color-brown);
+  opacity: 0.6;
 }
 
 .day-cell-content {
@@ -42,3 +98,46 @@
   top: 20px; /* 상단 기준으로 위치 설정 */
   right: 11px; /* 오른쪽 끝에 맞추어 배치 */
 }
+
+/* 모바일 환경에서 스타일 변경 */
+@media (max-width: 700px) {
+  /* 달력 컨테이너 */
+  .cat-calendar-container {
+    width: 390px; /* 전체 달력의 너비 고정 */
+    height: 600px; /* 전체 달력의 높이 고정 */
+    top: 70px;
+    right: 0;
+  }
+
+  /*캘린더 UI고정 */
+  .fc {
+    width: 380px; /* 전체 달력의 너비 고정 */
+    height: 550px; /* 전체 달력의 높이 고정 */
+    max-width: 100%; /* 화면이 작은 경우를 대비해 최대 너비 제한 */
+  }
+
+  .fc-daygrid-day {
+    width: 30px !important; /* 각 날짜 셀의 너비 고정 */
+    height: 75px !important; /* 각 날짜 셀의 높이 고정 */
+  }
+  /* 고양이 발바닥 표시  // 날짜와 고양이 도장 사이에 약간의 간격 추가*/
+  .paw-mark {
+    width: 50px; /* 고양이 도장의 너비를 줄여서 날짜 셀 안에 맞추기 */
+    height: 50px; /* 고양이 도장의 높이도 셀 크기에 맞게 조정 */
+    border-radius: 50%; /* 둥근 이미지로 설정 */
+    position: absolute; /* 상대적인 위치를 잡기 위해서 absolute 필요 */
+    top: 20px; /* 상단 기준으로 위치 설정 */
+    right: -2.5px; /* 오른쪽 끝에 맞추어 배치 */
+  }
+}
+
+/*
+ #5F6F52
+#A9B388
+#FEFAE0
+#B99470 
+var(--primary-color-deepGreen)
+var(--primary-color-lightGreen)
+var(--primary-color-ivory)
+var(--primary-color-brown)
+*/

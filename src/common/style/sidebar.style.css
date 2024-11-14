@@ -1,0 +1,142 @@
+/* sidebar.style.css */
+
+/* 기본 스타일 */
+.sidebar-container {
+  width: 300px;
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+.sidebar-container.desktop-sidebar {
+  width: 400px;
+}
+
+/* 오른쪽 슬라이드 */
+.slide-in-right {
+  right: 0;
+  visibility: visible;
+  animation: slideInFromRight 0.5s ease forwards;
+}
+
+/* 왼쪽 슬라이드 */
+.slide-in-left {
+  left: 100px;
+  visibility: visible;
+  animation: slideInFromLeft 0.5s ease forwards;
+}
+/* 오른쪽에서 슬라이드 인 애니메이션 */
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+/* 왼쪽에서 슬라이드 인 애니메이션 */
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* 숨김 상태 */
+.hidden {
+  display: none;
+}
+
+/* 추가 UI 스타일 */
+.project-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.user-image {
+  width: 100px;
+  height: 100px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.user-info {
+  width: 100%;
+  background-color: #444;
+  padding: 10px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cat-list-container {
+  width: 100%;
+  background-color: #555;
+  padding: 10px;
+}
+
+.cat-list-title {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* 미디어 쿼리: 700px 미만일 때 사이드바 숨기기 */
+@media (max-width: 700px) {
+  .sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: #333;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 24px;
+  }
+
+  /* 모바일 모드에서 사이드바가 열릴 때 */
+  .sidebar-container.active.slide-in-right,
+  .sidebar-container.active.slide-in-left {
+    left: 0;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+    animation: slideInFromLeft 0.5s ease forwards;
+  }
+  /* 숨김 상태 */
+  .sidebar-container.hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(100%);
+  }
+  .sidebar-toggle-close {
+    background-color: transparent;
+    color: var(--primary-color-brown);
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

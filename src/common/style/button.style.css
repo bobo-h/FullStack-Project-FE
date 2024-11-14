@@ -1,35 +1,31 @@
 .common-button {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #A9B388;
-    border: 2px solid #A9B388;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .common-button:hover {
-    background-color: #5F6F52;
-    border: 3px solid #5F6F52;
-  }
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #a9b388;
+  border: 2px solid #a9b388;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
+.common-button:hover {
+  background-color: #5f6f52;
+  border: 3px solid #5f6f52;
+}
 
-  .common-button2 {
-    padding: 10px 20px;
-    font-size: 16px;
-    color: #000;
-    background-color: #fff;
-    border: 2px solid #A9B388; 
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+.common-button2 {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #000;
+  background-color: #fff;
+  border: 2px solid #a9b388;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
 
-  .common-button2:hover {
-      background-color: #A9B388;
-      color: #fff;
-  }
-
-  
-  
+.common-button2:hover {
+  background-color: #a9b388;
+  color: #fff;
+}

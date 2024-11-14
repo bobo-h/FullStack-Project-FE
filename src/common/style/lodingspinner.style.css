@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #fefae0;
+  background-color: var(--primary-color-ivory);
 }
 
 .piano {
@@ -18,7 +18,7 @@
   height: 35px;
   width: 8px;
   margin: 0 3px;
-  background-color: #5f6f52;
+  background-color: var(--primary-color-deepGreen);
 }
 
 @keyframes pianoAnimation {
@@ -51,3 +51,10 @@
 .piano-keyboard:last-child {
   animation-delay: 0.4s;
 }
+
+/* 
+var(--primary-color-deepGreen)
+var(--primary-color-lightGreen)
+var(--primary-color-ivory)
+var(--primary-color-brown) 
+*/
