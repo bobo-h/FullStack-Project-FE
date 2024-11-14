@@ -30,6 +30,40 @@ export const getProductList = createAsyncThunk(
     }
 );
 
+export const createProduct = createAsyncThunk(
+    "products/createProduct",
+    async (formData, { dispatch, rejectWithValue }) => {
+        try {
+
+            // const response = await api.post("/product", formData)
+            // if (response.status !== 200) throw new Error(response.error)
+
+            // dispatch(showToastMessage({ message: "상품 생성 완료", status: "success" }))
+            // dispatch(getProductList({ page: 1 }))
+
+            return true
+        } catch (error) {
+            return rejectWithValue(error.error)
+        }
+    }
+);
+
+export const editProduct = createAsyncThunk(
+    "products/editProduct",
+    async ({ id, ...formData }, { dispatch, rejectWithValue }) => {
+        try {
+
+            // const response = await api.put(`/product/${id}`, formData)
+            // if (response.status !== 200) throw new Error(response.error)
+            // dispatch(showToastMessage({ message: "상품 변경 완료", status: "success" }))
+            // dispatch(getProductList({ page: 1 }))
+            return true
+        } catch (error) {
+            return rejectWithValue(error.error)
+        }
+    }
+);
+
 // 슬라이스 생성
 const productSlice = createSlice({
     name: "products",
@@ -54,6 +88,20 @@ const productSlice = createSlice({
         },
     },
     extraReducers: (builder) => {
+        builder.addCase(createProduct.pending, (state, action) => {
+            state.loading = true;
+        })
+        builder.addCase(createProduct.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = "";
+            state.success = true; //상품 생성을 성공하면? 다이얼로그르 닫고, 실패하면? 실패 메시지를 다이얼로그에 보여주고, 닫진 않음. 
+
+        })
+        builder.addCase(createProduct.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+            state.success = false;
+        })
         builder.addCase(getProductList.pending, (state, action) => {
             state.loading = true;
         })
@@ -66,6 +114,19 @@ const productSlice = createSlice({
         builder.addCase(getProductList.rejected, (state, action) => {
             state.loading = false;
             state.error = action.payload;
+        })
+        builder.addCase(editProduct.pending, (state, action) => {
+            state.loading = true;
+        })
+        builder.addCase(editProduct.fulfilled, (state, action) => {
+            state.loading = false;
+            state.error = "";
+            state.success = true;
+        })
+        builder.addCase(editProduct.rejected, (state, action) => {
+            state.loading = false;
+            state.error = action.payload;
+            state.success = false;
         })
     },
 });
