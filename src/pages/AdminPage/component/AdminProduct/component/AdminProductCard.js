@@ -12,7 +12,7 @@ const ProductCard = () => {
             1
           </Col>
           <Col md={2} className="d-flex align-items-center">
-            <strong>이미지</strong>
+            이미지
           </Col>
           <Col md={2} className="d-flex align-items-center">
             까만고양이

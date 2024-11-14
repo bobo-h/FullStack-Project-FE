@@ -1,22 +1,31 @@
-import React from 'react';
-import { Container, Row, Col} from 'react-bootstrap';
-import Button from '../../../../common/components/Button';
+import React, { useState } from 'react';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import UserTable from './component/AdminUserTable';
+import UserCard from './component/AdminUserCard';
+
 
 const AdminUser = () => {
-
+  const [sortBy, setSortBy] = useState("");
   return (
     <div className="admin-product-page">
       <Container>
         <Row>
-          <Col md={5}>
+          <Col md={2}>
             <h2>User</h2>
           </Col>
-          <Col  md={7} className='text-end'>
-            <Button>add Item</Button>
+          <Col  md={3}>
+            <Form.Select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+            >
+              <option>최신순</option>
+              <option>등록순</option>
+            </Form.Select>
           </Col>
         </Row>
         <Row>
-
+          <UserTable/>
+          <UserCard/>
         </Row>
       </Container>
     </div>
