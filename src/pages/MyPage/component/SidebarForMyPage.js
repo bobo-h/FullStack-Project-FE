@@ -2,6 +2,7 @@ import { set } from "@cloudinary/url-gen/actions/variable";
 import React, { useState } from "react";
 import { Offcanvas, Navbar, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import sidebarForMyPageLogo from "../../../assets/sidebarForMyPageLogo.png";
 
 const SidebarForMyPage = () => {
   const navigate = useNavigate();
@@ -14,13 +15,9 @@ const SidebarForMyPage = () => {
 
   const NavbarContent = () => {
     return (
-      <div className="sidebar-style">
+      <div>
         <Link to="/">
-          <img
-            width={100}
-            src="../../../assets/sidebarForMyPage.png"
-            alt="catlog-logo.png"
-          />
+          <img width={150} src={sidebarForMyPageLogo} alt="catlog-logo.png" />
         </Link>
         <div className="sidebar-item">My Page</div>
         <ul className="sidebar-area">
@@ -41,11 +38,7 @@ const SidebarForMyPage = () => {
 
       <Navbar bg="light" expand={false} className="mobile-sidebar-toggle">
         <Container fluid>
-          <img
-            width={80}
-            src="../../../assets/sidebarForMyPage.png"
-            alt="catlog-logo.png"
-          />
+          <img width={80} src={sidebarForMyPageLogo} alt="catlog-logo.png" />
           <Navbar.Brand href="#"></Navbar.Brand>
           <Navbar.Toggle
             aria-controls={`offcanvasNavbar-expand`}

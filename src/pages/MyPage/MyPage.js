@@ -1,5 +1,6 @@
 import React from "react";
 import SidebarForMyPage from "./component/SidebarForMyPage";
+import UserInfoPage from "./component/UserInfoPage";
 import { Col, Container, Row } from "react-bootstrap";
 import "./style/sidebarForMyPage.style.css";
 
@@ -12,7 +13,7 @@ const MyPage = () => {
             <SidebarForMyPage />
           </Col>
           <Col xs={12} md={9} className="content">
-            {/* 이 영역에 MyPage 컨텐츠 */}
+            <UserInfoPage />
           </Col>
         </Row>
       </Container>
