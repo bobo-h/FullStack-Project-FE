@@ -1,0 +1,104 @@
+.admin-menubar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20%; /* Fixed width for the menu */
+    height: 100%; /* Full height of the screen */
+    background-color: #B99470;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    padding-top: 20px; /* Space from the top */
+
+    .titles {
+        display: flex;
+        flex-direction: column; /* Ensure the titles are stacked vertically */
+        justify-content: center; /* Center titles horizontally */
+        align-items: center; /* Center titles vertically */
+        width: 100%; /* Full width */
+        text-align: center; /* Center the text inside titles */
+    }
+  
+    .project-title {
+        margin-top: 20%; /* Space below the title */
+    }
+    
+    .project-subtitle {
+        margin-bottom: 10%; /* Space below the title */
+    }
+    
+  .button-container {
+    display: flex;
+    flex-direction: row; /* Horizontal layout for buttons */
+    justify-content: center; /* Center buttons horizontally */
+    width: 100%; /* Ensure the container takes up full width */
+  }
+  
+  .admin-button {
+    background-color: #B99470;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%; 
+    margin: 0%; 
+  }
+  
+  
+  .admin-button:hover {
+    background-color: #FEFAE0;
+    color: #000;
+  }
+  
+  .admin-button:focus {
+    outline: none;
+    color: #000;
+  }
+  .admin-button.active {
+    background-color: #FEFAE0;
+    color: #000;
+  }
+
+ 
+}
+
+@media (max-width: 700px) {
+    .admin-menubar {
+      width: 100%; /* Full width when in mobile view */
+      height: auto; /* Allow the menu to adjust height */
+      position: absolute; /* Move the menu to the top */
+      flex-direction: row; /* 수평 배치 */
+      justify-content: space-around; /* 항목들을 좌우로 고르게 배치 */
+    
+      .titles{
+        justify-content: space-around;
+        width: 20%;
+      }
+  
+      .project-title, .project-subtitle {
+        margin: 0; /* Remove margin to reduce space */
+        width: 100%; /* Full width */
+      }
+    
+      .project-subtitle {
+        margin-top: 10px; /* 추가로 간격을 주어 두 텍스트 사이 간격을 줄 수 있음 */
+      }
+  
+.button-container {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between; /* 버튼 간의 공간을 고르게 배치 */
+    width: 40%; /* 버튼들이 전체 너비를 차지하도록 설정 */
+    gap: 10px; /* 버튼 간의 간격 설정 */
+    margin-top: 10px; /* 버튼과 제목 사이에 간격 추가 */
+  }
+  
+    .admin-button {
+        width: 100%;/* Remove full-width for buttons */
+      padding: 10px 20px; /* Adjust padding for smaller buttons */
+      font-size: 16px; /* Adjust font size */
+    }
+  }
+} 
