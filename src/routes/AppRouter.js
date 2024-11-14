@@ -5,6 +5,7 @@ import MainPage from "../pages/MainPage/MainPage";
 import ResgisterPage from "../pages/RegisterPage/RegisterPage";
 import LoginPage from "../pages/LoginPage/LoginPage";
 import AdminPage from "../pages/AdminPage/AdminPage";
+import MyPage from "../pages/MyPage/MyPage";
 
 const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<ResgisterPage />} />
       <Route path="/admin" element={<AdminPage />} />
+      <Route path="/my-page" element={<MyPage />} />
     </Routes>
   );
 };
