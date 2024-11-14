@@ -1,6 +1,11 @@
+// 공용으로 쓰일 컬러를 저장하는 곳입니다. 좌측 이름은 컨벤션에 따라 --A-B-C 이런식으로 정해주시면 됩니다.
+// 색상을 변수화 시켜놓으면 주요 색상을 변경하고 싶을 때 이곳에서 변경하면 모든 곳에서 적용되어 용이합니다.
+
 :root {
   --primary-color-deepGreen: #5f6f52;
   --primary-color-lightGreen: #a9b388;
   --primary-color-ivory: #fefae0;
   --primary-color-brown: #b99470;
+
+  // 나중에 --text-color와 --border-color 등도 정하는 게 좋을 것 같습니다.
 }

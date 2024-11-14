@@ -10,8 +10,8 @@ const Navbar = memo(() => {
 
   const items = [
     { icon: "🏠", text: "Home", path: "/" },
-    { icon: "📔", text: "Diary", path: "/diary" },
-    { icon: "➕", text: "Write", path: "/add-diary" },
+    { icon: "📔", text: "Diary", path: "/diaries" },
+    { icon: "➕", text: "Write", path: "/diaries/new" },
     { icon: "🛒", text: "Shop", path: "/shop" },
     { icon: "👤", text: "My", path: "/my-page" },
   ];

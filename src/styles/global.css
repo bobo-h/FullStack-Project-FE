@@ -1,1 +1,5 @@
 @import "./color.css";
+// 각자 별도 css 파일이 필요한 곳에 상단처럼 임포트 하시고
+// 색상 사용하실 때
+// ex) background-color: var(--primary-color-deepGreen);
+// 이렇게 사용하시면 됩니다.

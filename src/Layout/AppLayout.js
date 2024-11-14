@@ -10,7 +10,8 @@ const AppLayout = ({ children }) => {
   return (
     <div className="app-layout">
       <NavBar />
-      {loging ? <LodingSpinner /> : { children }}
+      {children}
+      {/* {loging ? <LodingSpinner /> : { children }} */}
     </div>
   );
 };
