@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./style/admin.style.css";
-import AdminProductComponent from './component/AdminProduct/AdminProductComponent'; 
-import AdminUserComponent from './component/AdminUser/AdminUserComponent';
+import AdminProduct from './component/AdminProduct/AdminProduct'; 
+import AdminUser from './component/AdminUser/AdminUser';
 import AdminMenu from './component/AdminMenu/AdminMenu';
 
 
@@ -11,9 +11,9 @@ const AdminPage = () => {
   const renderSelectedComponent = () => {
     switch (selectedComponent) {
       case 'products':
-        return <AdminProductComponent/>;
+        return <AdminProduct/>;
       case 'users':
-        return <AdminUserComponent/>;
+        return <AdminUser/>;
       default:
         return <div>Select a menu item</div>;
     }

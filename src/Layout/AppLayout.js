@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import "./style/applayout.style.css";
 import LodingSpinner from "../common/components/LodingSpinner";
@@ -13,12 +13,16 @@ const AppLayout = ({ children }) => {
     setIsAlertVisible(!isAlertVisible);
   };
 
+  // 현재 경로가 /admin인지 확인
   const isAdminPage = location.pathname === "/admin";
 
+  // 경로가 /admin일 때 display: flex를 제거하려면 no-flex 클래스 추가
+  const appLayoutClass = isAdminPage ? 'no-flex' : 'display-flex';
+
   return (
-    <div className="app-layout">
+    <div className={`app-layout ${appLayoutClass}`}>
       {!isAdminPage && <NavBar toggleAlert={toggleAlert} />}
-      {loging ? <LodingSpinner /> :  children }
+      {loging ? <LodingSpinner /> : children}
     </div>
   );
 };

@@ -5,8 +5,10 @@ import { Row } from 'react-bootstrap';
 const AdminMenu = ({ setSelectedComponent, selectedComponent }) => {
   return (
     <div className='admin-menubar'>
-      <h3 className='project-title'>프로젝트</h3>
-      <h4 className='project-subtitle'>Admin Page</h4>
+      <div className='titles'>
+        <h3 className='project-title'>프로젝트</h3>
+        <h4 className='project-subtitle'>Admin Page</h4>
+      </div>
       <Row className="button-container">
         <button
           className={`admin-button ${selectedComponent === 'products' ? 'active' : ''}`}
