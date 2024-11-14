@@ -14,6 +14,7 @@ const Navbar = memo(() => {
     { icon: "➕", text: "Write", path: "/add-diary" },
     { icon: "🛒", text: "Shop", path: "/shop" },
     { icon: "👤", text: "My", path: "/my-page" },
+    { icon: "⚙️", text: "Admin", path: "/admin" },
   ];
 
   // 화면 크기 변경 감지
