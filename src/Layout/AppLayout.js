@@ -7,7 +7,7 @@ import NavBar from "../common/components/NavBar";
 const AppLayout = ({ children }) => {
   const location = useLocation();
   const [isAlertVisible, setIsAlertVisible] = useState(false);
-  const loging = false;
+  const loging = true;
 
   const toggleAlert = () => {
     setIsAlertVisible(!isAlertVisible);
@@ -23,7 +23,7 @@ const AppLayout = ({ children }) => {
   return (
     <div className={`app-layout ${appLayoutClass}`}>
       {!isAdminPage && <NavBar toggleAlert={toggleAlert} />}
-      {loging ? <LodingSpinner /> : children}
+      {children}
     </div>
   );
 };

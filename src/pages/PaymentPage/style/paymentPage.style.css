@@ -1,73 +1,19 @@
-.payment-title{
-    margin-top:30px;
-    margin-bottom:20px;
-}
-.rccs{
-    margin:0 !important;
-    max-width: 100%; /* 카드 이미지가 화면 너비에 맞게 조정되도록 설정 */
-}
-
-
-.form-area input{
-    margin-bottom: 10px;
-}
-.pay-button{
-    margin-top: 30px;
+/* 전체 페이지 배경색 */
+.payment-page {
+    background-color: #FEFAE0;
+    /* Light Ivory */
+    min-height: 100vh;
+    margin: 0;
+    padding: 20px;
 }
 
-.confirmation-page{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: white;
-    padding-top:20px;
-    padding-bottom: 40px;
-    width: 90%;
+.payment-product-card {
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 200px;
+    /* 모달 창 이미지 크기에 맞추기 */
 }
-
-.check-image{
-    padding:20px;
-}
-.mobile-receipt-area{
-    display:none;
-}
-
-/* 반응형 스타일: 화면이 좁아지면 레이아웃이 변경되도록 설정 */
-@media screen and (max-width: 63rem) {
-    .form-area{
-        margin-top: 20px;
-    }
-
-    .receipt-area{
-        display: none;
-    }
-    .mobile-receipt-area{
-        display:block;
-    }
-
-    /* 카드 이미지와 폼 영역이 수직으로 쌓이도록 설정 */
-    .credit-card-preview,
-    .form-area {
-        width: 100%;
-        margin-bottom: 20px; /* 추가된 부분: 카드 이미지와 폼 사이 간격 추가 */
-    }
-
-    /* .pay-button{
-        position: absolute;
-        bottom: 0;
-    } */
-}
-
-/* 추가 스타일: 카드 이미지의 최대 너비를 제한 */
-.credit-card-preview {
-    display: flex;
-    justify-content: center;
-    max-width: 250px; /* 추가된 부분: 카드 이미지 최대 너비 설정 */
-    width: 100%;
-}
-
-.credit-card-preview .rccs {
-    max-width: 250px; /* 카드 이미지의 최대 너비 제한 */
-    width: 100%;
-    height: auto; /* 높이 자동 조정 */
-  }

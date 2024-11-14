@@ -7,8 +7,9 @@ import "./style/paymentPage.style.css";
 import { cc_expires_format } from "../../utils/number";
 import { createOrder } from "../../features/order/orderSlice";
 
-const PaymentPage = ({ selectedProduct }) => {
+const PaymentPage = () => {
   const dispatch = useDispatch();
+  const selectedProduct = useSelector((state) => state.product.selectedProduct);
   const { orderNum } = useSelector((state) => state.order);
   const [firstLoading, setFirstLoading] = useState(true);
 
@@ -23,7 +24,7 @@ const PaymentPage = ({ selectedProduct }) => {
   const [orderInfo, setOrderInfo] = useState({
     name: "",
     email: "",
-    contact: "",
+    phoneNumber: "",
   });
 
   const navigate = useNavigate();
@@ -35,9 +36,8 @@ const PaymentPage = ({ selectedProduct }) => {
 
       // 오더번호를 받으면 어디로 갈까?
       if (orderNum !== "") {
-        navigate("/payment/success")
+        navigate("/chatbot")
       }
-
     }
 
   }, [orderNum]);
@@ -46,7 +46,6 @@ const PaymentPage = ({ selectedProduct }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // 오더 생성하기 (TODO HERE!!)
     // 선택한 상품 정보를 사용하여 주문 생성
     dispatch(createOrder({
       productId: selectedProduct.id,
@@ -61,6 +60,7 @@ const PaymentPage = ({ selectedProduct }) => {
 
     // 이름, 이메일 주소 입력 
     const { name, value } = event.target;
+    setOrderInfo({ ...orderInfo, [name]: value }); // 입력 필드 업데이트
   };
 
   const handlePaymentInfoChange = (event) => {
@@ -78,31 +78,51 @@ const PaymentPage = ({ selectedProduct }) => {
     setCardValue({ ...cardValue, focus: e.target.name });
   };
 
+  const proceedToPayment = () => {
+    navigate("/chatbot")
+  }
+
+  const stopPayment = () => {
+    navigate("/shop")
+  }
 
   return (
-    <Container>
+    <Container fluid className="payment-page">
       <Row>
-        {/* Left column with product image */}
-        <Col lg={5} className="product-image">
-          {selectedProduct && (
-            <>
+        {/* 고양이 카드 */}
+        <Col lg={5}>
+          <Row className="mb-4">
+            {/* 상단 공백 */}
+            <Col>
+              <div style={{ height: "20px" }}></div>
+            </Col>
+          </Row>
+          {selectedProduct ? (
+            <div className="payment-product-card">
               <img
-                src={selectedProduct.imageUrl} // 선택한 상품 이미지 표시
+                src={selectedProduct.imageUrl}
                 alt={selectedProduct.name}
-                className="img-fluid"
+                className="img-fluid product-image"
               />
-              <h5 className="mt-3">{selectedProduct.name}</h5> {/* 상품 이름 */}
-            </>
+            </div>
+          ) : (
+            <p>상품 정보를 불러올 수 없습니다.</p>
           )}
+          <Row className="mt-3 justify-content-center text-center">
+            {/* 결제 금액 표시 */}
+            <Col>
+              <h5>결제 금액: 1,000₩ </h5>
+            </Col>
+          </Row>
         </Col>
 
-        {/* Right column with buyer and card information */}
+        {/* 구매자, 카드 정보 */}
         <Col lg={7}>
-          <h2 className="payment-title">구매자 정보</h2>
+          <h4 >구매자 정보</h4>
           <Form onSubmit={handleSubmit}>
             {/* 구매자 이름 입력 */}
             <Row className="mb-3">
-              <Form.Group as={Col} controlId="name">
+              <Form.Group as={Col} lg={6} controlId="buyer-name">
                 <Form.Label>이름</Form.Label>
                 <Form.Control
                   type="text"
@@ -116,7 +136,7 @@ const PaymentPage = ({ selectedProduct }) => {
 
             {/* 구매자 이메일 입력 */}
             <Row className="mb-3">
-              <Form.Group as={Col} controlId="email">
+              <Form.Group as={Col} lg={6} controlId="email">
                 <Form.Label>이메일</Form.Label>
                 <Form.Control
                   type="email"
@@ -124,26 +144,28 @@ const PaymentPage = ({ selectedProduct }) => {
                   required
                   name="email"
                   value={orderInfo.email}
+                  placeholder="example@example.com"
                 />
               </Form.Group>
             </Row>
 
             {/* 구매자 전화번호 입력 */}
             <Row className="mb-3">
-              <Form.Group as={Col} controlId="contact">
+              <Form.Group as={Col} lg={6} controlId="phone-number">
                 <Form.Label>전화번호</Form.Label>
                 <Form.Control
                   type="tel"
                   onChange={handleFormChange}
                   required
-                  name="contact"
-                  value={orderInfo.contact}
+                  name="phone-number"
+                  value={orderInfo.phoneNumber}
+                  placeholder="010-XXXX-XXXX"
                 />
               </Form.Group>
             </Row>
 
             {/* 카드 정보 입력 폼 */}
-            <h2 className="payment-title">카드 정보</h2>
+            <h4 className="payment-title">카드 정보</h4>
             <PaymentForm
               cardValue={cardValue}
               handleInputFocus={handleInputFocus}
@@ -151,9 +173,14 @@ const PaymentPage = ({ selectedProduct }) => {
             />
 
             {/* 결제 버튼 */}
-            <Button variant="dark" className="payment-button pay-button mt-4" type="submit">
-              결제하기
-            </Button>
+            <div className="text-center mt-4">
+              <Button variant="primary" onClick={proceedToPayment} className="payment-button mx-2">
+                결제하기
+              </Button>
+              <Button variant="secondary" onClick={stopPayment} className="cancel-button mx-2">
+                취소
+              </Button>
+            </div>
           </Form>
         </Col>
       </Row>
