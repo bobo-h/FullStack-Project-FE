@@ -5,7 +5,7 @@ import Button2 from '../../../../../common/components/Button2';
 
 const ProductCard = () => {
   return (
-    <div className='product-table-name'>
+    <div className='product-table-content'>
       <Container>
         <Row className="mb-4">
           <Col md={1} className="d-flex align-items-center">

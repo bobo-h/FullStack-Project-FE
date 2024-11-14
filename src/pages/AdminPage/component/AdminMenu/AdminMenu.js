@@ -22,6 +22,26 @@ const AdminMenu = ({ setSelectedComponent, selectedComponent }) => {
         >
           Users
         </button>
+        <button
+          className={`admin-button ${selectedComponent === 'payment' ? 'active' : ''}`}
+          onClick={() => setSelectedComponent('payment')}
+        >
+          Payment
+        </button>
+        <button
+          className={`admin-button ${selectedComponent === 'diary' ? 'active' : ''}`}
+          onClick={() => setSelectedComponent('diary')}
+        >
+          Diary
+        </button>
+      </Row>
+      <Row md={7} className='text-end button-container'>
+        <button
+          className={`admin-button ${selectedComponent === 'home' ? 'active' : ''}`}
+          onClick={() => setSelectedComponent('home')}
+        >
+          Home
+        </button>
       </Row>
     </div>
   );

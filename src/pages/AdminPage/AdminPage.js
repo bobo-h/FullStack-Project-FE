@@ -3,6 +3,7 @@ import "./style/admin.style.css";
 import AdminProduct from './component/AdminProduct/AdminProduct'; 
 import AdminUser from './component/AdminUser/AdminUser';
 import AdminMenu from './component/AdminMenu/AdminMenu';
+import Button2 from '../../common/components/Button2';
 
 
 const AdminPage = () => {
@@ -28,7 +29,12 @@ const AdminPage = () => {
         />
       </div>
       <div className="admin-content">
-        {renderSelectedComponent()}
+        <div className="home-btn">
+          <Button2>메인으로</Button2>
+        </div>
+        <div className="content-component">
+          {renderSelectedComponent()}
+        </div>
       </div>
     </div>
   );

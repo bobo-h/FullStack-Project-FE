@@ -5,7 +5,7 @@ import "../style/adminUser.style.css";
 const UserTable = () => {
   return (
     <div className='user-table-name'>
-      <Container>
+      <Container >
         <Row className="mb-4">
           <Col md={1} className="d-flex align-items-center">
             <strong>#</strong>

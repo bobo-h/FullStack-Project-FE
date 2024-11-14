@@ -32,7 +32,6 @@
     display: flex;
     flex-direction: row; /* Horizontal layout for buttons */
     justify-content: center; /* Center buttons horizontally */
-    gap: 5%; /* 5% gap between buttons */
     width: 100%; /* Ensure the container takes up full width */
   }
   

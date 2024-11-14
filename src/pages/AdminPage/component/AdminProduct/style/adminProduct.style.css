@@ -1,22 +1,33 @@
-.product-table-name {
-  margin-top: 3%;
-  margin-bottom: 2%;
-  padding: 1%;
-  /* background-color: #A9B388; */
-  /* border-radius: 10px;  */
+.admin-product-page{
+  .product-table-name {
+    margin-top: 3%;
+    margin-bottom: 2%;
+    padding: 1%;
+  }
+  
+  .product-table-name .product-table-content .container {
+    border-radius: 10px;
+  }
+  
+  .product-table-name .product-table-content .row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .product-table-name .product-table-content .col {
+    display: flex;
+    align-items: center; 
+  }
+  
+  .table-area {
+    margin-top: 3%;
+    background-color: #fff; 
+    border-radius: 20px;
+  }
 
-
-.product-table-name .container {
-  border-radius: 10px; /* Optional: If you want to round the container inside as well */
+  .product-table-name{
+    border-bottom: 2px solid #000;
+  }
 }
 
-.product-table-name .row {
-  display: flex;
-  justify-content: space-between;
-}
 
-.product-table-name .col {
-  display: flex;
-  align-items: center; /* Vertically centers the content */
-}
-}

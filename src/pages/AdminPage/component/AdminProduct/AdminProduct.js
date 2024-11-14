@@ -23,12 +23,12 @@ const AdminProductComponent = () => {
               <option>배경지</option>
             </Form.Select>
           </Col>
-          <Col  md={7} className='text-end'>
+          <Col md={7} className='text-end'>
             <Button>add Item</Button>
           </Col>
         </Row>
-        <Row>
-          <ProductTable />
+        <Row className='table-area'>
+          <ProductTable className='unser-line'/>
           <ProductCard/>
         </Row>
       </Container>

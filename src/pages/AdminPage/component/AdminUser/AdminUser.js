@@ -7,7 +7,7 @@ import UserCard from './component/AdminUserCard';
 const AdminUser = () => {
   const [sortBy, setSortBy] = useState("");
   return (
-    <div className="admin-product-page">
+    <div className="admin-user-page">
       <Container>
         <Row>
           <Col md={2}>
@@ -23,7 +23,7 @@ const AdminUser = () => {
             </Form.Select>
           </Col>
         </Row>
-        <Row>
+        <Row className='table-area'>
           <UserTable/>
           <UserCard/>
         </Row>
