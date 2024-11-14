@@ -5,6 +5,7 @@ import productReducer from "./product/productSlice";
 import orderRecuder from "./order/orderSlice";
 import diarySlice from "./diary/diarySlice";
 
+
 const store = configureStore({
   reducer: {
     chatbot: chatbotSlice,
@@ -12,6 +13,7 @@ const store = configureStore({
     product: productReducer,
     order: orderRecuder,
     diary: diarySlice,
+    
   },
 });
 
