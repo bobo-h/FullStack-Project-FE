@@ -2,7 +2,7 @@ import { set } from "@cloudinary/url-gen/actions/variable";
 import React, { useState } from "react";
 import { Offcanvas, Navbar, Container } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import sidebarForMyPageLogo from "../../../assets/sidebarForMyPageLogo.png";
+import sidebarForMyPageLogo from "../../../assets/sidebarForMyPageLogo_1.png";
 
 const SidebarForMyPage = () => {
   const navigate = useNavigate();
@@ -17,7 +17,7 @@ const SidebarForMyPage = () => {
     return (
       <div>
         <Link to="/">
-          <img width={150} src={sidebarForMyPageLogo} alt="catlog-logo.png" />
+          <img width={120} src={sidebarForMyPageLogo} alt="catlog-logo.png" />
         </Link>
         <div className="sidebar-item">My Page</div>
         <ul className="sidebar-area">
