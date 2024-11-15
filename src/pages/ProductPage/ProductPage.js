@@ -60,6 +60,11 @@ const ProductPage = () => {
                     </div>
                 ) : productList.length > 0 ? (
                     productList.map((item) => (
+                    //     <ProductCard
+                    //     key={item.id}
+                    //     product={{ ...item, image: catImage() }} 
+                    //     onOpenPaymentModal={handleOpenPaymentModal}
+                    // />
                         <Col xs={12} sm={6} md={4} lg={2} key={item.id} className="d-flex justify-content-center mb-4">
                             <div className="product-card" onClick={() => handleOpenPaymentModal(item)}>
                                 <img src={item.imageUrl} alt={item.name} className="img-fluid" style={{ cursor: "pointer" }} />

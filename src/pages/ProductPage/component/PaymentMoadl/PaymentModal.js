@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col, Form} from "react-bootstrap";
 import ReactDOM from "react-dom";
 import "./style/paymentModal.style.css";
 import Button from "../../../../common/components/Button";
@@ -24,28 +25,39 @@ const PaymentModal = ({ selectedProduct, onClose, onProceedToPayment }) => {
         }
     };
 
-    return ReactDOM.createPortal(
+    const ItemContent = (
         <div className="modal-backdrop" onClick={handleBackdropClick}>
-            <div className="modal-container">
-                <div className="modal-header">
-                    <h5 className="modal-title">입양하기(1000원)</h5>
-                    <button type="button" className="btn-close" onClick={onClose} aria-label="Close"></button>
-                </div>
-                <div className="modal-body text-center">
-                    <img src={selectedProduct.imageUrl} alt={selectedProduct.name} className="img-fluid mb-3" />
-                </div>
-                <div className="modal-footer">
-                    <Button variant="primary" onClick={onProceedToPayment} className="payment-button">
-                        결제하기
-                    </Button>
-                    <Button2 variant="secondary" onClick={onClose} className="cancel-button">
-                        취소
-                    </Button2>
-                </div>
-            </div>
-        </div>,
-        document.getElementById("modal-root")
-    );
+            <Container className="payment-modal-backdrop">
+            <button className="modal-close-button" onClick={onClose}>X</button>
+                <h5 className="modal-title">Meow Info</h5>
+                <Row>
+                    <Col>
+                        <img 
+                            src={selectedProduct.imageUrl} 
+                            alt={selectedProduct.name} 
+                            className="img-fluid" 
+                            style={{ height: '50%', width: 'auto' }} 
+                        />
+                    </Col>
+                    <Col>
+                        <div>고양이 이름</div>
+                        <div>고양이 설명</div>    
+                    </Col>
+                </Row>
+                <Row>
+                    <Col className="btn-gap">
+                        <Button variant="primary" onClick={onProceedToPayment} className="payment-button">
+                            결제하기
+                        </Button>
+                        <Button2 variant="secondary" onClick={onClose} className="cancel-button">
+                            취소
+                        </Button2>
+                    </Col>
+                </Row>
+            </Container>
+        </div>
+    )
+    return ReactDOM.createPortal(ItemContent, document.getElementById("root"));
 };
 
 export default PaymentModal;

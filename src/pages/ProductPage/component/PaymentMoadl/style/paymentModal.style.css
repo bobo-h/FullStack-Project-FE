@@ -43,15 +43,7 @@
     border-top: 1px solid #dee2e6;
 }
 
-.payment-button {
-    background-color: #007bff;
-    color: white;
-}
 
-.cancel-button {
-    background-color: #6c757d;
-    color: white;
-}
 }
 /* 애니메이션 */
 @keyframes fadeIn {
