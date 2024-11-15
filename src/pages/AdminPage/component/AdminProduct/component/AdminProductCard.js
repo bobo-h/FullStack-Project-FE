@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import "../style/adminProduct.style.css";
 import Button2 from '../../../../../common/components/Button2';
 import { useDispatch } from 'react-redux';
-import { setSelectedProduct } from "../../../../../features/product/productSlice";
+import { setSelectedProduct, deleteProduct } from "../../../../../features/product/productSlice";
 
 const AdminProductCard = ({ product, setMode, setShowDialog }) => {
   const dispatch = useDispatch();
@@ -18,6 +18,12 @@ const AdminProductCard = ({ product, setMode, setShowDialog }) => {
 
   };
 
+  const handleClickDeleteItem = () => {
+    
+    dispatch(deleteProduct(product._id));
+
+  };
+
   return (
     <div className='product-table-content'>
       <Container>
@@ -26,7 +32,7 @@ const AdminProductCard = ({ product, setMode, setShowDialog }) => {
             {product.id}
           </Col>
           <Col md={2} className="d-flex align-items-center">
-            <img src={product.imageUrl} alt={product.name} className="img-fluid" />
+            <img src={product.image} alt={product.name} className="img-fluid" />
           </Col>
           <Col md={2} className="d-flex align-items-center">
             {product.name}
@@ -39,7 +45,7 @@ const AdminProductCard = ({ product, setMode, setShowDialog }) => {
           </Col>
           <Col md={3} className="d-flex align-items-center justify-content-center">
             <Button2 onClick={handleClickEditItem}>수정</Button2>
-            <Button2>삭제</Button2>
+            <Button2 onClick={handleClickDeleteItem}>삭제</Button2>
           </Col>
         </Row>
       </Container>

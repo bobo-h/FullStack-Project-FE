@@ -58,7 +58,7 @@ const ProductPage = () => {
                     productList.map((item) => (
                         <Col xs={12} sm={6} md={4} lg={2} key={item.id} className="d-flex justify-content-center mb-4">
                             <div className="product-card" onClick={() => handleOpenPaymentModal(item)}>
-                                <img src={item.imageUrl} alt={item.name} className="img-fluid" style={{ cursor: "pointer" }} />
+                                <img src={item.image} alt={item.name} className="img-fluid" style={{ cursor: "pointer" }} />
                             </div>
                         </Col>
                     ))

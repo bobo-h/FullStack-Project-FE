@@ -11,8 +11,8 @@ import {
 } from "../../../../../features/product/productSlice";
 
 const InitialFormData = {
+  id: "",
   name: "",
-  item_id: "",
   image: "",
   description: "",
   category: [],
@@ -58,10 +58,13 @@ const NewProductDialog = ({ mode, showDialog, setShowDialog }) => {
 
     if (mode === "new") {
       //새 상품 만들기
+      console.log("formData??", formData)
       dispatch(createProduct(formData))
     } else {
       // 상품 수정하기
-      dispatch(editProduct({ ...formData, id: selectedProduct.item_id })
+      console.log("selectedProduct??", selectedProduct)
+      console.log("formData??", formData)
+      dispatch(editProduct({ ...formData, id: selectedProduct._id })
       );
     };
 
@@ -71,7 +74,17 @@ const NewProductDialog = ({ mode, showDialog, setShowDialog }) => {
     //form에 데이터 넣어주기
     const { id, value } = event.target;
     setFormData({ ...formData, [id]: value });
+  }
+
+  const handleCategoryChange = (value) => {
+    setFormData((prevFormData) => {
+      const updatedCategory = [value]; // 기존 값을 지우고 새로 선택된 값만 배열로 저장
+      console.log("Updated category:", updatedCategory); // 디버깅 로그
+      return { ...prevFormData, category: updatedCategory };
+    });
   };
+
+
 
   const uploadImage = (url) => {
     //이미지 업로드
@@ -94,14 +107,14 @@ const NewProductDialog = ({ mode, showDialog, setShowDialog }) => {
       )}
       <Form className="form-container" onSubmit={handleSubmit}>
         <Row className="mb-3">
-          <Form.Group as={Col} controlId="item_id">
+          <Form.Group as={Col} controlId="id">
             <Form.Label>Product ID</Form.Label>
             <Form.Control
               onChange={handleChange}
               type="string"
               placeholder="Enter Product Id"
               required
-              value={formData.item_id}
+              value={formData.id}
             />
           </Form.Group>
 
@@ -167,8 +180,8 @@ const NewProductDialog = ({ mode, showDialog, setShowDialog }) => {
           <Form.Group as={Col} controlId="category">
             <Form.Label>Category</Form.Label>
             <Form.Select
-              value={formData.category}
-              onChange={handleChange}
+              value={formData.category[0] || ""} // 첫 번째 선택된 값을 표시
+              onChange={(e) => handleCategoryChange(e.target.value)} // 변경 핸들러 호출
               required
             >
               {CATEGORY.map((item, idx) => (
