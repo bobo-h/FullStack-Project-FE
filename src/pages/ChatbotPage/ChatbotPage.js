@@ -33,11 +33,8 @@ const ChatbotCreation = () => {
 
   return (
     <div className='chatbot-create-modal'>
-        <Container className="d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
-            <Row className="text-center">
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
+        <Container className=" d-flex justify-content-center align-items-center" style={{ height: '100vh' }}>
+            <Row className="text-center chatbot-create-content">
             <h3 className='create-modal-title'>입양 서류</h3>
                 <Col md={6} className="d-flex justify-content-center">
                     <img 

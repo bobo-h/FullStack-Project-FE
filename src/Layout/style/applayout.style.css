@@ -27,6 +27,13 @@
 }
 
 /* 수빈님 */
+/* /chatbot 경로에서 app-layout css적용 X */
+.chatbot-page {
+  
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
 
 /* .app-layout.no-flex {
   display: block; }/admin 페이지에서 flex를 없애는 방식 */

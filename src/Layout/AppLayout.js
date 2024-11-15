@@ -41,18 +41,24 @@ const AppLayout = ({ children }) => {
 
   // 현재 경로가 /admin인지 확인
   const isAdminPage = location.pathname === "/admin";
+  const isChatbotPage = location.pathname === "/chatbot";
   const isMyPage = location.pathname === "/my-page";
 
   // 경로가 /admin일 때 display: flex를 제거하려면 no-flex 클래스 추가
   const appLayoutClass = isAdminPage ? "no-flex" : "display-flex";
-
+  // 경로가 /chatbot일 때
+  const layoutClass = isChatbotPage ? "chatbot-page" : "app-layout";
   const loading = false;
 
   return (
     // <div className={`app-layout ${appLayoutClass}`}>
     //   {!isAdminPage && <NavBar toggleAlert={toggleAlert} />}
     //   {children}
-    <div className={`app-layout ${isSidebarActive ? "sidebar-active" : ""}`}>
+
+    //진수님
+    //<div className={`app-layout ${isSidebarActive ? "sidebar-active" : ""}`}>
+
+    <div className={`${layoutClass} ${isSidebarActive ? "sidebar-active" : ""}`}> {/**수빈 chatbot appLayout css 미적용 */}
       <NavBar />
       <SideBar
         currentPage={currentPage}
