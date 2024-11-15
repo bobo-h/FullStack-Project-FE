@@ -52,6 +52,20 @@ export const loginWithGoogle = createAsyncThunk(
     }
   }
 );
+
+// 토큰으로 로그인
+export const loginWithToken = createAsyncThunk(
+  "user/loginWithToken",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await api.get("/user/me");
+      return response;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
 // 마이페이지 회원정보 수정
 export const editUserInfo = createAsyncThunk(
   "user/editUserInfo",
@@ -125,6 +139,9 @@ const userSlice = createSlice({
       .addCase(loginWithGoogle.rejected, (state, action) => {
         state.loading = false;
         state.loginError = action.payload;
+      })
+      .addCase(loginWithToken.fulfilled, (state, action) => {
+        state.user = action.payload.data.user;
       })
       .addCase(editUserInfo.pending, (state) => {
         state.loading = true;
