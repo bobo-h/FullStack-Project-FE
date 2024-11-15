@@ -69,16 +69,9 @@ export const loginWithToken = createAsyncThunk(
 // 마이페이지 회원정보 수정
 export const editUserInfo = createAsyncThunk(
   "user/editUserInfo",
-  async (
-    { id, name, birthday, profileImage },
-    { dispatch, rejectWithValue }
-  ) => {
+  async ({ id, formData }, { dispatch, rejectWithValue }) => {
     try {
-      const response = await api.put(`/user/${id}`, {
-        name,
-        birthday,
-        profileImage,
-      });
+      const response = await api.put(`/user/${id}`, formData);
       // 수정된 내용 바로 갱신
       return response.data.data;
     } catch (error) {

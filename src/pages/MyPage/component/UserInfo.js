@@ -3,103 +3,134 @@ import { Form, Col, Row, Image, Container } from "react-bootstrap";
 import Button from "../../../common/components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "../../../common/components/Alert";
-import { editUserInfo } from "../../../features/user/userSlice";
+import { editUserInfo, clearErrors } from "../../../features/user/userSlice";
+import CloudinaryUploadWidget from "../../../utils/CloudinaryUploadWidget";
+import userDefaultLogo from "../../../assets/userDefaultLogo.png";
+import "../style/userInfo.style.css";
 
 const UserInfo = () => {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state.user);
+  const { user, editError } = useSelector((state) => state.user);
 
   // 상태 변수 정의
-  const [name, setName] = useState("");
-  const [birthDate, setBirthDate] = useState("");
-  const [profileImage, setProfileImage] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  // const [name, setName] = useState("");
+  // const [birthDate, setBirthDate] = useState("");
+  // const [profileImage, setProfileImage] = useState(null);
 
+  // formData 상태 초기화
+  const [formData, setFormData] = useState({
+    name: "",
+    birthday: "",
+    profileImage: "",
+  });
+
+  const [isEditing, setIsEditing] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
+  // user 정보가 변경되면 formData 갱신
   useEffect(() => {
     if (user) {
-      setName(user.name);
-      setBirthDate(user.birthday.slice(0, 10));
+      setFormData({
+        name: user.name || "",
+        birthday: user.birthday?.slice(0, 10) || "", // YYYY-MM-DD 형식으로 설정
+        profileImage: user.profileImage || "",
+      });
     }
   }, [user]);
 
+  //form에 데이터 넣어주기
+  const handleInputChange = (event) => {
+    const { id, value } = event.target;
+    setFormData({ ...formData, [id]: value });
+  };
   // 프로필 사진 변경 핸들러
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setProfileImage(URL.createObjectURL(file)); // 미리보기 이미지 URL 생성
-    }
+  const uploadImage = (url) => {
+    setFormData({ ...formData, profileImage: url });
   };
 
   // 정보 업데이트 핸들러
   const handleUpdate = () => {
     if (isEditing) {
       // 업데이트 BE
-      if (!name) {
+      if (!formData.name) {
         setAlertMessage("이름은 필수 입력 값입니다.");
         setShowAlert(true);
         return;
       }
-      dispatch(
-        editUserInfo({ id: user?._id, name, birthday: birthDate, profileImage })
-      );
-      setAlertMessage(`${name}님의 정보가 성공적으로 수정되었습니다!`);
-      setShowAlert(true);
+      dispatch(editUserInfo({ id: user?._id, formData }));
       setIsEditing(false);
     } else {
       setIsEditing(true);
     }
+  };
+  //
+  const handleCloseAlert = () => {
+    dispatch(clearErrors());
+    setShowAlert(false);
   };
 
   return (
     <div className="user-info-page">
       <Container>
         <Row className="d-flex justify-content-center align-items-center">
-          <Col xs={12} md={4} className="text-center">
+          <Col xs={12} md={4} className="profile-image-area">
             <Image
-              src={profileImage || "https://via.placeholder.com/150"}
+              id="uploadedimage"
+              src={
+                formData.profileImage && formData.profileImage.trim() !== ""
+                  ? formData.profileImage
+                  : userDefaultLogo
+              }
+              className="upload-image-style"
+              alt="uploadedimage"
               roundedCircle
               width={150}
               height={150}
-              alt="Profile"
             />
-            {isEditing ? (
-              <Form.Group controlId="profileImage" className="mt-3">
-                <Form.Label>프로필 사진 업로드</Form.Label>
-                <Form.Control type="file" onChange={handleImageUpload} />
-              </Form.Group>
-            ) : (
-              ""
-            )}
+
+            <Form.Group className="profile-image__upload__btn">
+              <div className="form-label-container">
+                <Form.Label>프로필 사진</Form.Label>
+              </div>
+              {isEditing ? (
+                <CloudinaryUploadWidget
+                  className="cloudinary-style"
+                  uploadImage={uploadImage}
+                />
+              ) : (
+                ""
+              )}
+            </Form.Group>
           </Col>
           <Col xs={12} md={8} className="userInfo-form-style">
             <Form>
               <Form.Group as={Row} controlId="name" className="mb-3">
-                <Form.Label column sm={3}>
+                <Form.Label column sm={3} className="label-item-style">
                   이름
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control
+                    className="form-item-style"
                     type="text"
-                    value={name}
+                    value={formData.name}
                     disabled={!isEditing}
-                    onChange={(e) => setName(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </Col>
               </Form.Group>
 
               <Form.Group as={Row} controlId="birthday" className="mb-3">
-                <Form.Label column sm={3}>
+                <Form.Label column sm={3} className="label-item-style">
                   생일
                 </Form.Label>
                 <Col sm={9}>
                   <Form.Control
+                    className="form-item-style"
                     type="date"
-                    value={birthDate}
+                    value={formData.birthday}
                     disabled={!isEditing}
-                    onChange={(e) => setBirthDate(e.target.value)}
+                    onChange={handleInputChange}
                   />
                 </Col>
               </Form.Group>
@@ -117,9 +148,8 @@ const UserInfo = () => {
         </Row>
       </Container>
 
-      {showAlert && (
-        <Alert onClose={() => setShowAlert(false)}>{alertMessage}</Alert>
-      )}
+      {showAlert && <Alert onClose={handleCloseAlert}>{alertMessage}</Alert>}
+      {editError && <Alert onClose={handleCloseAlert}>{editError}</Alert>}
     </div>
   );
 };
