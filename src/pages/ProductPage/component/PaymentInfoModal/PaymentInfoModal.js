@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Container, Row, Col, Form, Button, Dropdown } from "react-bootstrap";
+import { Container, Row, Col, Form} from "react-bootstrap";
 import { useNavigate } from "react-router";
 import { useSelector, useDispatch } from "react-redux";
-import PaymentForm from "./component/PaymentForm";
-import "./style/paymentPage.style.css";
-import { cc_expires_format } from "../../utils/number";
-import { createOrder } from "../../features/order/orderSlice";
+import "./style/paymentInfoModal.style.css";
+import { cc_expires_format } from "../../../../utils/number";
+import { createOrder } from "../../../../features/order/orderSlice";
+import PaymentForm from "./PaymentForm";
+import Button from "../../../../common/components/Button";
+import Button2 from "../../../../common/components/Button2";
+import ReactDOM from "react-dom";
 
-const PaymentPage = () => {
+const PaymentInfoModal = ({ onClose }) => {
   const dispatch = useDispatch();
   const selectedProduct = useSelector((state) => state.product.selectedProduct);
   const { orderNum } = useSelector((state) => state.order);
@@ -31,7 +34,7 @@ const PaymentPage = () => {
 
   useEffect(() => {
     if (firstLoading) {
-      setFirstLoading(false); // useEffect가 처음에 호출될 때 오더 성공페이지로 넘어가지 않도록 처리 
+      setFirstLoading(false); 
     } else {
 
       // 오더번호를 받으면 어디로 갈까?
@@ -81,13 +84,16 @@ const PaymentPage = () => {
   const proceedToPayment = () => {
     navigate("/chatbot")
   }
+  const handleBackdropClick = (event) => {
+      if (event.target.classList.contains("modal-backdrop")) {
+          onClose();
+      }
+  };
 
-  const stopPayment = () => {
-    navigate("/shop")
-  }
 
-  return (
-    <Container fluid className="payment-page">
+  const PaymentInfoContent = (
+    <div className="modal-backdrop" onClick={handleBackdropClick}>
+    <Container className="payment-modal-backdrop">
       <Row>
         {/* 고양이 카드 */}
         <Col lg={5}>
@@ -177,15 +183,19 @@ const PaymentPage = () => {
               <Button variant="primary" onClick={proceedToPayment} className="payment-button mx-2">
                 결제하기
               </Button>
-              <Button variant="secondary" onClick={stopPayment} className="cancel-button mx-2">
+              <Button2 variant="secondary" onClick={onClose} className="cancel-button mx-2">
                 취소
-              </Button>
+              </Button2>
             </div>
           </Form>
         </Col>
       </Row>
     </Container>
+    </div>
   );
+  
+  return ReactDOM.createPortal(PaymentInfoContent, document.getElementById("root"));
+
 };
 
-export default PaymentPage;
+export default PaymentInfoModal;
