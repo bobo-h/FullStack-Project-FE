@@ -52,6 +52,26 @@ export const loginWithGoogle = createAsyncThunk(
     }
   }
 );
+// 마이페이지 회원정보 수정
+export const editUserInfo = createAsyncThunk(
+  "user/editUserInfo",
+  async (
+    { id, name, birthday, profileImage },
+    { dispatch, rejectWithValue }
+  ) => {
+    try {
+      const response = await api.put(`/user/${id}`, {
+        name,
+        birthday,
+        profileImage,
+      });
+      // 수정된 내용 바로 갱신
+      return response.data.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
 const userSlice = createSlice({
   name: "user",
   initialState: {
@@ -59,12 +79,14 @@ const userSlice = createSlice({
     loading: false,
     loginError: null,
     registrationError: null,
+    editError: null,
     success: false,
   },
   reducers: {
     clearErrors: (state) => {
       state.loginError = null;
       state.registrationError = null;
+      state.editError = null;
     },
   },
   extraReducers: (builder) => {
@@ -103,6 +125,17 @@ const userSlice = createSlice({
       .addCase(loginWithGoogle.rejected, (state, action) => {
         state.loading = false;
         state.loginError = action.payload;
+      })
+      .addCase(editUserInfo.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(editUserInfo.fulfilled, (state, action) => {
+        state.loading = false;
+        state.user = action.payload;
+      })
+      .addCase(editUserInfo.rejected, (state, action) => {
+        state.loading = false;
+        state.editError = action.payload;
       });
   },
 });
