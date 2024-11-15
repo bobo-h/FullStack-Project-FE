@@ -1,9 +1,17 @@
 .chatbot-create-modal{
-    height: 100%;
      display: flex; /* Enable flexbox */
     justify-content: center; /* Center horizontally */
      align-items: center; /* Center vertically */
+     background-color: rgba(0, 0, 0, 0.5);
 
+
+     .chatbot-create-content {
+        background-color: var(--primary-color-ivory);
+        height: auto;
+        width: 80%;
+        padding: 10% 5% 10% 5%; 
+    }
+    
      .create-modal-flex {
         display: flex; /* Flexbox container */
         flex-direction: column; /* Stack items vertically */

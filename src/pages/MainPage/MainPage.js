@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ReactComponent as CalendarIcon } from "../../assets/calendar.svg";
+import { ReactComponent as AdminIcon } from "../../assets/admin_info.svg";
 import CalendarComponent from "./components/CalendarComponent";
 import "./style/mainpage.style.css";
 
@@ -45,6 +46,11 @@ const MainPage = () => {
   return (
     <div className="main-container">
       <img className="cats-room" src="backgroundimage.webp" alt="cats room" />
+      <AdminIcon
+        className="navigate-admin-button"
+        onClick={() => navigate(`/admin`)}
+      />
+
       {!isCalendarOpen ? (
         <CalendarIcon
           className="main-opt calendar-button"

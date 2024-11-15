@@ -42,7 +42,7 @@ const SideBar = ({ currentPage, isSidebarActive, setIsSidebarActive }) => {
   return (
     <>
       <div className={sidebarClasses}>
-        <h1 className="project-title">프로젝트 이름</h1>
+        <h1 className="project-title">MeowMemo</h1>
         <div className="user-image" />
         <div className="user-info">개인정보</div>
         <div className="cat-list-container">
@@ -66,3 +66,4 @@ const SideBar = ({ currentPage, isSidebarActive, setIsSidebarActive }) => {
 };
 
 export default SideBar;
+
