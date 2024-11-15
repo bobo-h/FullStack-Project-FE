@@ -11,13 +11,17 @@
   padding: 20px;
   position: fixed;
   top: 0;
-  height: 100%;
+  height: calc(100vh - 60px);
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.3s ease;
+  z-index: 100;
+  overflow: auto; /* 내용이 넘칠 때 스크롤 바를 표시 */
+  box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.4);
 }
 .sidebar-container.desktop-sidebar {
   width: 400px;
+  height: 100%;
 }
 
 /* 오른쪽 슬라이드 */
@@ -63,16 +67,17 @@
 
 /* 추가 UI 스타일 */
 .project-title {
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 30px;
+  margin-bottom: 30px;
 }
 
 .user-image {
-  width: 100px;
-  height: 100px;
-  background-color: #ccc;
-  border-radius: 50%;
+  width: 350px;
+  height: 500px;
+  background-color: var(--primary-color-ivory);
+  border-radius: 8px;
   margin-bottom: 20px;
+  flex-shrink: 0; /* 플렉스 레이아웃에서 사이즈가 줄어들지 않도록 설정 */
 }
 
 .user-info {
@@ -97,7 +102,7 @@
 /* 미디어 쿼리: 700px 미만일 때 사이드바 숨기기 */
 @media (max-width: 700px) {
   .sidebar-toggle {
-    position: absolute;
+    position: fixed;
     top: 20px;
     left: 20px;
     width: 50px;
@@ -111,6 +116,17 @@
     cursor: pointer;
     z-index: 1000;
     font-size: 24px;
+    animation: toggleFadeIn 0.5s ease forwards; /* 등장 시 애니메이션 추가 */
+  }
+  @keyframes toggleFadeIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 
   /* 모바일 모드에서 사이드바가 열릴 때 */
@@ -138,5 +154,66 @@
     position: absolute;
     top: 0;
     left: 0;
+  }
+  /* 테스트중  다른곳 눌리면 닫힘*/
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50; /* 사이드바보다 위에 있도록 설정 */
+    animation: overlayFadeIn 0.5s ease-in-out forwards; /* 배경색 전환 애니메이션 */
+  }
+
+  /* 추가된 키프레임 애니메이션 */
+  @keyframes overlayFadeIn {
+    0% {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    100% {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  /* 사이드바 닫힐 때 애니메이션 추가 */
+  .sidebar-container.active.slide-in-right.closing,
+  .sidebar-container.active.slide-in-left.closing {
+    animation: slideOutToLeft 0.5s ease forwards;
+  }
+
+  /* 추가된 키프레임 애니메이션 (닫힐 때) */
+  /* 사이드바 열릴 때 반대 방향 애니메이션 추가 */
+  /* 추가된 키프레임 애니메이션 (닫힐 때 왼쪽으로 빠지기) */
+  @keyframes slideOutToLeft {
+    0% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+
+  /* 오버레이가 사라질 때 애니메이션 추가 */
+  .overlay.closing {
+    animation: overlayFadeOut 0.5s ease-in-out forwards;
+  }
+
+  @keyframes overlayFadeOut {
+    0% {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    100% {
+      background-color: rgba(0, 0, 0, 0);
+    }
+  }
+
+  /*   하위 리스트 css    */
+
+  .user-image {
+    width: 250px;
+    height: 400px;
   }
 }

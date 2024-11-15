@@ -2,9 +2,7 @@
   height: 100vh;
   width: calc(100vw - 100px);
   margin-left: 100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: auto; /* 내용이 넘칠 때 스크롤 바를 표시 */
 }
 
 /* 사이드바가 활성화되었을 때의 .app-layout */

@@ -45,9 +45,9 @@ const MainPage = () => {
 
   return (
     <div className="main-container">
-      <img className="cats-room" src="backgroundimage.webp" alt="cats room" />
+      <img className="cats-room" src="backgroundimage.png" alt="cats room" />
       <AdminIcon
-        className="navigate-admin-button"
+        className="main-opt navigate-admin-button"
         onClick={() => navigate(`/admin`)}
       />
 

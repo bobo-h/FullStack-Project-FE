@@ -29,7 +29,13 @@ const AppLayout = ({ children }) => {
     // 페이지가 매칭될 경우 상태 업데이트
     if (matchedPage) {
       setCurrentPage(matchedPage.page);
-      setIsSidebarActive(matchedPage.sidebar);
+
+      // 화면 크기에 따라 사이드바 상태 설정
+      if (window.innerWidth < 700) {
+        setIsSidebarActive(false);
+      } else {
+        setIsSidebarActive(matchedPage.sidebar);
+      }
     } else {
       // 매칭되는 페이지가 없는 경우 기본값 설정
       setCurrentPage("");
