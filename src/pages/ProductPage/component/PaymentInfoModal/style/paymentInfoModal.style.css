@@ -1,7 +1,5 @@
 .modal-backdrop {
     position: fixed;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 */
@@ -13,10 +11,9 @@
 .payment-modal-backdrop {
     background-color: #FEFAE0;
     width: 90%;
-    max-width: 500px;
     border-radius: 8px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 3%;
     text-align: center; /* 전체 내용을 중앙 정렬 */
 }
 
@@ -44,4 +41,36 @@
     /* 모달 창 이미지 크기에 맞추기 */
 }
 
+}
+
+/* Ensure credit card preview and form area stack correctly on small screens */
+.credit-card-preview,
+.form-area {
+    /* Ensure the columns don't overlap */
+    margin-bottom: 15px;
+}
+
+/* Custom media query to make sure the two columns stack properly on small screens */
+@media (max-width: 1220px) {
+    .credit-card-preview,
+    .form-area {
+        /* Full width for both the card preview and form on smaller screens */
+        width: 100%;
+    }
+
+    .payment-modal-backdrop {
+        padding: 5%;
+    }
+}
+
+@media (min-width: 2200px) {
+    .credit-card-preview,
+    .form-area {
+        /* Full width for both the card preview and form on smaller screens */
+        width: 100%;
+    }
+
+    .payment-modal-backdrop {
+        padding: 3%;
+    }
 }

@@ -94,9 +94,10 @@ const PaymentInfoModal = ({ onClose }) => {
   const PaymentInfoContent = (
     <div className="modal-backdrop" onClick={handleBackdropClick}>
     <Container className="payment-modal-backdrop">
+      <h3 className="modal-title">입양 절차</h3>
       <Row>
         {/* 고양이 카드 */}
-        <Col lg={5}>
+        <Col lg={4}>
           <Row className="mb-4">
             {/* 상단 공백 */}
             <Col>
@@ -117,56 +118,76 @@ const PaymentInfoModal = ({ onClose }) => {
           <Row className="mt-3 justify-content-center text-center">
             {/* 결제 금액 표시 */}
             <Col>
-              <h5>결제 금액: 1,000₩ </h5>
+              <h5>까만 고양이 </h5>
+              <h5>₩ 1,000 </h5>
             </Col>
           </Row>
         </Col>
 
         {/* 구매자, 카드 정보 */}
         <Col lg={7}>
-          <h4 >구매자 정보</h4>
+          <h4 className="payment-title">구매자 정보</h4>
           <Form onSubmit={handleSubmit}>
             {/* 구매자 이름 입력 */}
             <Row className="mb-3">
-              <Form.Group as={Col} lg={6} controlId="buyer-name">
-                <Form.Label>이름</Form.Label>
-                <Form.Control
-                  type="text"
-                  onChange={handleFormChange}
-                  required
-                  name="name"
-                  value={orderInfo.name}
-                />
+              <Form.Group controlId="buyer-name">
+                <Row>
+                  <Col lg={2} xs="auto">
+                    <Form.Label>이름</Form.Label>
+                  </Col>
+                  <Col >
+                    <Form.Control
+                      type="text"
+                      onChange={handleFormChange}
+                      required
+                      name="name"
+                      value={orderInfo.name}
+                    />
+                  </Col>
+                </Row>
+                
               </Form.Group>
             </Row>
 
             {/* 구매자 이메일 입력 */}
             <Row className="mb-3">
-              <Form.Group as={Col} lg={6} controlId="email">
-                <Form.Label>이메일</Form.Label>
-                <Form.Control
-                  type="email"
-                  onChange={handleFormChange}
-                  required
-                  name="email"
-                  value={orderInfo.email}
-                  placeholder="example@example.com"
-                />
+              <Form.Group controlId="email">
+              <Row>
+                  <Col lg={2} xs="auto">
+                    <Form.Label>이메일</Form.Label>
+                  </Col>
+                  <Col>
+                    <Form.Control
+                    type="email"
+                    onChange={handleFormChange}
+                    required
+                    name="email"
+                    value={orderInfo.email}
+                    placeholder="example@example.com"
+                    />
+                  </Col>
+                </Row>
               </Form.Group>
             </Row>
 
             {/* 구매자 전화번호 입력 */}
             <Row className="mb-3">
-              <Form.Group as={Col} lg={6} controlId="phone-number">
-                <Form.Label>전화번호</Form.Label>
-                <Form.Control
-                  type="tel"
-                  onChange={handleFormChange}
-                  required
-                  name="phone-number"
-                  value={orderInfo.phoneNumber}
-                  placeholder="010-XXXX-XXXX"
-                />
+              <Form.Group controlId="phone-number">
+              <Row>
+                  <Col lg={2} xs="auto">
+                   <Form.Label>전화번호</Form.Label>
+                  </Col>
+                  <Col>
+                    <Form.Control
+                    type="tel"
+                    onChange={handleFormChange}
+                    required
+                    name="phone-number"
+                    value={orderInfo.phoneNumber}
+                    placeholder="010-XXXX-XXXX"
+                  />
+                  </Col>
+                </Row>
               </Form.Group>
             </Row>
 

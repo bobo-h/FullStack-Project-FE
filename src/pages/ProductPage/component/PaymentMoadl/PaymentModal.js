@@ -28,7 +28,7 @@ const PaymentModal = ({ selectedProduct, onClose, onProceedToPayment }) => {
     const ItemContent = (
         <div className="modal-backdrop" onClick={handleBackdropClick}>
             <Container className="payment-modal-backdrop">
-                <h2 className="modal-title">Meow Info</h2>
+                <h3 className="modal-title">입양하시겠습니까?</h3>
                 
                     {/* <Col>
                         <img 
