@@ -28,10 +28,9 @@ const PaymentModal = ({ selectedProduct, onClose, onProceedToPayment }) => {
     const ItemContent = (
         <div className="modal-backdrop" onClick={handleBackdropClick}>
             <Container className="payment-modal-backdrop">
-            <button className="modal-close-button" onClick={onClose}>X</button>
-                <h5 className="modal-title">Meow Info</h5>
-                <Row>
-                    <Col>
+                <h2 className="modal-title">Meow Info</h2>
+                
+                    {/* <Col>
                         <img 
                             src={selectedProduct.imageUrl} 
                             alt={selectedProduct.name} 
@@ -42,8 +41,23 @@ const PaymentModal = ({ selectedProduct, onClose, onProceedToPayment }) => {
                     <Col>
                         <div>고양이 이름</div>
                         <div>고양이 설명</div>    
-                    </Col>
-                </Row>
+                    </Col> */}
+                    <div className="payment-card-area">
+                        <Container className="product-card">
+                            <Row className="align-items-center">
+                            <div className="cat-id">고양이 번호</div>
+                            <Col className="image-container">
+                                <div className="image">이미지</div>
+                            </Col>
+                            <Col>
+                                <div className="name">이름</div>
+                                <div className="description">설명</div>
+                                <div className="price">가격</div>
+                            </Col>
+                            </Row>
+                        </Container>
+                        </div>
+              
                 <Row>
                     <Col className="btn-gap">
                         <Button variant="primary" onClick={onProceedToPayment} className="payment-button">

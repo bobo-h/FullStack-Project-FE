@@ -7,26 +7,16 @@
 
 /* 전체 페이지 배경색 */
 .product-page {
-    background-color: #FEFAE0;
-    /* Light Ivory */
     min-height: 100vh;
     margin-top: 0;
     padding: 20px;
-}
 
-.product-card {
-    background-color: #FFFFFF;
-    border-radius: 8px;
-    padding: 10px;
-    text-align: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 150px;           /* 카드 너비 설정 */
-    margin: 10px auto;      /* 카드 간격 조정 */
+.product-category-btns{
+    margin-bottom:3%
 }
-
 /* 모달창 커스텀 스타일 */
 .custom-modal {
-    background-color: #FEFAE0; /* Light Ivory, product-page 배경색과 동일하게 */
+    background-color: var(--primary-color-lightIvory); /* Light Ivory, product-page 배경색과 동일하게 */
     border-radius: 10px;
     padding: 20px;
 }
@@ -46,4 +36,6 @@
 }
 
 
+}
 
+    

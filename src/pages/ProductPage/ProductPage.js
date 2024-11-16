@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../common/components/LoadingSpinner";
 import PaymentModal from "./component/PaymentMoadl/PaymentModal.js";
 import PaymentInfoModal from "./component/PaymentInfoModal/PaymentInfoModal.js"; // Import PaymentInfoModal
+import ProductCard from "./component/ProductCard/ProductCard.js"; // Import PaymentInfoModal
+import Button2 from "../../common/components/Button2.js";
 
 const ProductPage = () => {
     const dispatch = useDispatch();
@@ -51,7 +53,16 @@ const ProductPage = () => {
 
     return (
         <Container fluid className="product-page">
+            <Row className="product-category-btns">
+                <Col md={2}>
+                    <Button2>고양이</Button2>
+                </Col>
+                <Col md={2}>
+                    <Button2>배경</Button2>
+                </Col>
+            </Row>
             <Row className="justify-content-center">
+                <ProductCard/>
                 {loading ? (
                     <div className="text-align-center">
                         <LoadingSpinner animation="border" role="status">
@@ -60,11 +71,6 @@ const ProductPage = () => {
                     </div>
                 ) : productList.length > 0 ? (
                     productList.map((item) => (
-                    //     <ProductCard
-                    //     key={item.id}
-                    //     product={{ ...item, image: catImage() }} 
-                    //     onOpenPaymentModal={handleOpenPaymentModal}
-                    // />
                         <Col xs={12} sm={6} md={4} lg={2} key={item.id} className="d-flex justify-content-center mb-4">
                             <div className="product-card" onClick={() => handleOpenPaymentModal(item)}>
                                 <img src={item.imageUrl} alt={item.name} className="img-fluid" style={{ cursor: "pointer" }} />

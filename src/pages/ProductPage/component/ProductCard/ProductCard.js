@@ -1,14 +1,26 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
+
+import "./style/productCard.style.css";
 
 const ProductCard = ({ item, handleOpenPaymentModal }) => {
   return (
-    <Col xs={12} sm={6} md={4} lg={2} className="d-flex justify-content-center mb-4">
-      <div className="product-card" onClick={() => handleOpenPaymentModal(item)}>
-        <img src={item.imageUrl} alt={item.name} className="img-fluid" style={{ cursor: "pointer" }} />
-        <h5>{item.name}</h5>
-      </div>
-    </Col>
+    <div className="product-card-area">
+      <Container className="product-card">
+        <Row className="align-items-center">
+          <div className="cat-id">고양이 번호</div>
+          <Col className="image-container">
+            <div className="image">이미지</div>
+          </Col>
+          <Col>
+            <div className="name">이름</div>
+            <div className="description">설명</div>
+            <div className="price">가격</div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+
   );
 };
 
