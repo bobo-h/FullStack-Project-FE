@@ -3,6 +3,7 @@ import { Form, Col, Row, Image, Container } from "react-bootstrap";
 import Button from "../../../common/components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import Alert from "../../../common/components/Alert";
+import Alert3 from "../../../common/components/Alert3";
 import { editUserInfo, clearErrors } from "../../../features/user/userSlice";
 import CloudinaryUploadWidget from "../../../utils/CloudinaryUploadWidget";
 import userDefaultLogo from "../../../assets/userDefaultLogo.png";
@@ -27,6 +28,7 @@ const UserInfo = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
+  const [deleteShowAlert, setDeleteShowAlert] = useState(false);
 
   // user 정보가 변경되면 formData 갱신
   useEffect(() => {
@@ -64,10 +66,15 @@ const UserInfo = () => {
       setIsEditing(true);
     }
   };
-  //
+  // Alert창 닫을 때의 설정 (에러 초기화)
   const handleCloseAlert = () => {
     dispatch(clearErrors());
     setShowAlert(false);
+    setDeleteShowAlert(false);
+  };
+
+  const handleDelete = () => {
+    setDeleteShowAlert(true);
   };
 
   return (
@@ -141,7 +148,12 @@ const UserInfo = () => {
                 >
                   {isEditing ? "수정 완료" : "회원정보 수정"}
                 </Button>
-                <Button className="userInfo-form__btn__delete">회원탈퇴</Button>
+                <Button
+                  className="userInfo-form__btn__delete"
+                  onClick={handleDelete}
+                >
+                  회원탈퇴
+                </Button>
               </div>
             </Form>
           </Col>
@@ -150,6 +162,15 @@ const UserInfo = () => {
 
       {showAlert && <Alert onClose={handleCloseAlert}>{alertMessage}</Alert>}
       {editError && <Alert onClose={handleCloseAlert}>{editError}</Alert>}
+
+      {deleteShowAlert && (
+        <Alert3 onClose={handleCloseAlert} buttonText="확인">
+          <p>
+            회원 탈퇴를 하면 90일 동안 해당 이메일을 사용하실 수 없습니다.
+            정말로 탈퇴하시겠습니까?
+          </p>
+        </Alert3>
+      )}
     </div>
   );
 };
